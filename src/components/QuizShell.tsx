@@ -13,8 +13,19 @@ interface ShuffledQuestion {
 const STORAGE_KEY_STATE = "cpe310_quiz_state";
 const STORAGE_KEY_SETTINGS = "cpe310_quiz_settings";
 
-export default function QuizShell({ data }: { data: QuizData }) {
-  const { meta, questions } = data;
+interface CourseOption {
+  id: string;
+  name: string;
+  description: string;
+  data: QuizData;
+}
+
+export default function QuizShell({ courses }: { courses: CourseOption[] }) {
+  const [selectedCourseId, setSelectedCourseId] = useState(courses[0].id);
+
+  // Get active course data based on selection
+  const activeCourse = courses.find((c) => c.id === selectedCourseId) || courses[0];
+  const { meta, questions } = activeCourse.data;
 
   const [mounted, setMounted] = useState(false);
   const [state, setState] = useState<QuizState>("idle");
@@ -52,8 +63,10 @@ export default function QuizShell({ data }: { data: QuizData }) {
       const savedState = localStorage.getItem(STORAGE_KEY_STATE);
       if (savedState) {
         const parsed = JSON.parse(savedState);
-        // Ensure meta titles match to verify it's the same quiz
-        if (parsed.quizTitle === meta.title) {
+        // Find if the saved course is in the available courses list
+        const matchingCourse = courses.find(c => c.data.meta.title === parsed.quizTitle);
+        if (matchingCourse) {
+          setSelectedCourseId(matchingCourse.id);
           setState(parsed.state);
           setCurrent(parsed.current);
           setAnswers(parsed.answers);
@@ -62,19 +75,19 @@ export default function QuizShell({ data }: { data: QuizData }) {
           // Re-map active questions
           if (parsed.activeQuestionsOrder) {
             const mapped: ShuffledQuestion[] = parsed.activeQuestionsOrder.map((item: any) => ({
-              question: questions[item.originalIndex],
+              question: matchingCourse.data.questions[item.originalIndex],
               originalIndex: item.originalIndex,
             }));
             setActiveQuestions(mapped);
           } else {
-            setActiveQuestions(questions.map((q, i) => ({ question: q, originalIndex: i })));
+            setActiveQuestions(matchingCourse.data.questions.map((q, i) => ({ question: q, originalIndex: i })));
           }
         }
       }
     } catch (e) {
       console.error("Error loading local storage state:", e);
     }
-  }, [meta.title, questions]);
+  }, [courses]);
 
   // Save state to local storage when state/current/answers change
   useEffect(() => {
@@ -244,10 +257,39 @@ export default function QuizShell({ data }: { data: QuizData }) {
             {meta.title}
           </h1>
           <p className="text-slate-400 text-sm md:text-base font-medium max-w-md mx-auto">
-            Self-assessment on Agent-Based Systems. Test your comprehension of agent modules, traditional reasoning, and Agentic AI.
+            {activeCourse.description}
           </p>
 
           <div className="bg-slate-900/30 border border-slate-800/80 rounded-3xl p-5 md:p-6 text-left glass-card space-y-5">
+            {/* Course Selector Section */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                Select Course Assessment
+              </label>
+              <div className="relative">
+                <select
+                  value={selectedCourseId}
+                  onChange={(e) => {
+                    const nextCourseId = e.target.value;
+                    setSelectedCourseId(nextCourseId);
+                    const targetCourse = courses.find((c) => c.id === nextCourseId);
+                    if (targetCourse) {
+                      setAnswers(Array(targetCourse.data.questions.length).fill(-1));
+                    }
+                  }}
+                  className="w-full bg-slate-950/80 border border-slate-850 rounded-xl px-4 py-3.5 text-xs md:text-sm text-slate-200 focus:outline-none focus:border-brand-500 cursor-pointer appearance-none"
+                >
+                  {courses.map((course) => (
+                    <option key={course.id} value={course.id}>
+                      {course.name}
+                    </option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 text-xs">
+                  ▼
+                </div>
+              </div>
+            </div>
             <h2 className="text-sm font-bold uppercase tracking-widest text-slate-400 border-b border-slate-850 pb-2">
               Quiz Setup Options
             </h2>

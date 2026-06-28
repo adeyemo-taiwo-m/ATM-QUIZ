@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "CPE310 – Agent-Based Systems Quiz",
+    "title": "CPE310 \u2013 Agent-Based Systems Quiz",
     "course": "CPE310",
-    "totalQuestions": 30,
-    "passMark": 21
+    "totalQuestions": 80,
+    "passMark": 56
   },
   "questions": [
     {
@@ -32,10 +32,10 @@
       "id": 3,
       "question": "What loop forms the mental framework guiding all agent behavior?",
       "options": [
-        "In-Context → Fine-Tuning → Deployment",
-        "Synchronous → Blocking → Resolved",
-        "Perceive → Reason → Act",
-        "Ingest → Extract → Detect"
+        "In-Context \u2192 Fine-Tuning \u2192 Deployment",
+        "Synchronous \u2192 Blocking \u2192 Resolved",
+        "Perceive \u2192 Reason \u2192 Act",
+        "Ingest \u2192 Extract \u2192 Detect"
       ],
       "correctAnswer": 2
     },
@@ -152,12 +152,7 @@
     {
       "id": 14,
       "question": "Complete the key distinction: Believable does NOT equal ________.",
-      "options": [
-        "Consistent",
-        "Autonomous",
-        "Realistic",
-        "Interactive"
-      ],
+      "options": ["Consistent", "Autonomous", "Realistic", "Interactive"],
       "correctAnswer": 2
     },
     {
@@ -185,12 +180,7 @@
     {
       "id": 17,
       "question": "According to Nwana (1996), how many core characteristics form the backbone of agent design?",
-      "options": [
-        "Six",
-        "Three",
-        "Four",
-        "Nine"
-      ],
+      "options": ["Six", "Three", "Four", "Nine"],
       "correctAnswer": 0
     },
     {
@@ -262,23 +252,13 @@
     {
       "id": 24,
       "question": "Which attribute refers to an agent making decisions and acting independently based on environmental perception?",
-      "options": [
-        "Autonomy",
-        "Proactivity",
-        "Reactivity",
-        "Delegation"
-      ],
+      "options": ["Autonomy", "Proactivity", "Reactivity", "Delegation"],
       "correctAnswer": 0
     },
     {
       "id": 25,
       "question": "According to the building blocks analogy, if the perception module represents \"senses,\" what does the action module represent?",
-      "options": [
-        "Context",
-        "Hands",
-        "Memory",
-        "Brain"
-      ],
+      "options": ["Context", "Hands", "Memory", "Brain"],
       "correctAnswer": 1
     },
     {
@@ -333,6 +313,526 @@
         "It persists indefinitely across weeks of idle time",
         "It is typically lost between sessions if no persistence layer is added",
         "It encodes hardcoded enterprise operating playbooks"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 31,
+      "question": "Who introduced the 'Pandemonium Model' featuring autonomous software 'demons' in 1959?",
+      "options": [
+        "Carl Hewitt",
+        "Victor Lesser",
+        "Oliver Selfridge",
+        "Hyacinth Nwana"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 32,
+      "question": "What year did Carl Hewitt publish the Actor Model?",
+      "options": ["1959", "1973", "1977", "1996"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 33,
+      "question": "Which scholar is credited with pioneering multi-agent systems (MAS) in 1977?",
+      "options": [
+        "Oliver Selfridge",
+        "Carl Hewitt",
+        "Victor Lesser",
+        "Hyacinth Nwana"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 34,
+      "question": "What is the title of Nwana's landmark 1996 paper that established the first comprehensive agent classification?",
+      "options": [
+        "Attention Is All You Need",
+        "Intelligent Agents: Theory and Practice",
+        "A Universal Modular ACTOR Formalism for AI",
+        "Software Agents: An Overview"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 35,
+      "question": "Which agent type is described as having the lowest cognitive load, operating purely on stimulus-response?",
+      "options": ["Deliberative", "Hybrid", "Reactive", "Collaborative"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 36,
+      "question": "In Nwana's typology, which agent type combines both reactive and deliberative capabilities?",
+      "options": ["Mobile", "Collaborative", "Learning", "Hybrid"],
+      "correctAnswer": 3
+    },
+    {
+      "id": 37,
+      "question": "Which agent type in Nwana's typology is best represented by a thermostat agent?",
+      "options": ["Deliberative", "Reactive", "Hybrid", "Mobile"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 38,
+      "question": "According to the Three Pillars, which pillar is described as 'The Differentiator' that introduces goal-directed behaviour?",
+      "options": ["Autonomy", "Asynchronicity", "Agency", "Adaptability"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 39,
+      "question": "Which pillar of modern software agents is described as 'The Mechanism' involving event-driven, non-blocking communication?",
+      "options": ["Autonomy", "Agency", "Asynchronicity", "Mobility"],
+      "correctAnswer": 2
+    },
+    {
+      "id": 40,
+      "question": "What does the course quote from AWS Prescriptive Guidance (2025) identify as the defining principle that separates a reactive service from a true software agent?",
+      "options": [
+        "Parallelism",
+        "Ability to act with intention and purpose \u2014 to be agentic",
+        "Integration with cloud-native storage",
+        "Support for multiple input modalities"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 41,
+      "question": "In the agent's mental state model, what are 'Intentions'?",
+      "options": [
+        "The desired outcomes the agent is pursuing",
+        "Internal representations of the environment based on perception",
+        "Pre-stored or dynamically generated action sequences in the plan library",
+        "Chosen plans the agent commits to after goal selection"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 42,
+      "question": "What triggers an update to an agent's 'Beliefs' according to the mental state model?",
+      "options": [
+        "The delegator updating objectives",
+        "The plan library being refreshed",
+        "New sensor or API data arriving",
+        "A selected plan being executed"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 43,
+      "question": "In the agent's mental state model, when are an agent's 'Goals' updated?",
+      "options": [
+        "When new sensor data arrives",
+        "When the delegator updates objectives",
+        "When a plan is selected from the plan library",
+        "When the action module completes execution"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 44,
+      "question": "Which of the following correctly describes the role of the 'Plan Library' in the agent's mental state?",
+      "options": [
+        "It stores transient context within a single session",
+        "It holds pre-stored or dynamically generated action sequences",
+        "It manages the agent's emotional intensity decay",
+        "It encodes raw sensor inputs into structured beliefs"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 45,
+      "question": "What key architectural problem does Retrieval-Augmented Generation (RAG) solve for LLM-based agents?",
+      "options": [
+        "It reduces the number of API calls the agent needs to make",
+        "It provides physical actuation capabilities to the agent",
+        "It overcomes the context window limit by injecting relevant memories at runtime",
+        "It replaces the planning submodule entirely"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 46,
+      "question": "What is 'prompt chaining' in the context of LLM-based agent memory?",
+      "options": [
+        "Linking multiple vector databases into one unified store",
+        "Maintaining short-term context by passing conversation history and action outcomes between LLM calls",
+        "Fine-tuning model weights with labelled examples",
+        "Parallelizing multiple agent perceptions simultaneously"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 47,
+      "question": "According to the course materials, what is the practical architecture for enterprise-grade agent memory?",
+      "options": [
+        "Symbolic logic trees plus hand-coded rules",
+        "Static plan libraries combined with physical actuation",
+        "RAG combined with an Agent Store",
+        "Few-shot prompting alone"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 48,
+      "question": "Which learning paradigm allows an LLM-based agent to adapt through prompt examples without retraining the model?",
+      "options": [
+        "Supervised Learning",
+        "Reinforcement Learning",
+        "Unsupervised Learning",
+        "In-Context / Few-Shot Learning"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 49,
+      "question": "Which learning paradigm optimises agent behaviour through trial and error by maximising cumulative reward?",
+      "options": [
+        "Supervised Learning",
+        "Reinforcement Learning",
+        "Unsupervised Learning",
+        "In-Context Learning"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 50,
+      "question": "What main risk is associated with LLM-powered agent reasoning that is NOT a risk with traditional symbolic agents?",
+      "options": [
+        "Brittleness in unforeseen situations",
+        "Inability to use APIs",
+        "Hallucination and unpredictability",
+        "Dependence on static plan libraries"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 51,
+      "question": "According to the course, what does 'Delegated Intent' mean in the context of agency?",
+      "options": [
+        "An agent physically moving across different network environments",
+        "An agent carrying and acting on goals assigned by a user or system",
+        "An agent blocking execution until user confirmation is received",
+        "An agent discarding previous beliefs when new data arrives"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 52,
+      "question": "Which of the four functional modules is described using the analogy 'Hands'?",
+      "options": [
+        "Perception Module",
+        "Cognitive Module",
+        "Learning Module",
+        "Action Module"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 53,
+      "question": "Which of the four functional modules is described using the analogy 'Brain'?",
+      "options": [
+        "Perception Module",
+        "Cognitive Module",
+        "Action Module",
+        "Learning Module"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 54,
+      "question": "Which of the four functional modules is described using the analogy 'Memory'?",
+      "options": [
+        "Perception Module",
+        "Cognitive Module",
+        "Action Module",
+        "Learning Module"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 55,
+      "question": "In the Action Module, which output channel handles steering robots, triggering IoT sensors, and manufacturing process control?",
+      "options": [
+        "Integrated Interaction",
+        "Tool Invocation",
+        "Physical Actuation",
+        "Semantic Interpretation"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 56,
+      "question": "In the Action Module, calling search functions, executing code, or invoking calculation tools falls under which output channel?",
+      "options": [
+        "Physical Actuation",
+        "Tool Invocation",
+        "Integrated Interaction",
+        "Feature Extraction"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 57,
+      "question": "In an LLM agent, what serves as Short-Term Memory during an active session?",
+      "options": [
+        "The vector database",
+        "The RAG retrieval index",
+        "The active context window",
+        "The fine-tuned model weights"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 58,
+      "question": "In an LLM agent, what infrastructure provides Long-Term Memory across sessions?",
+      "options": [
+        "The active context window",
+        "Hard-coded plan libraries",
+        "Synchronous blocking pipelines",
+        "Vector databases and agent stores"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 59,
+      "question": "The Agentic AI architecture is described as the convergence of four pillars. Which of the following is NOT one of those four pillars?",
+      "options": [
+        "Multi-agent systems and the Actor Model",
+        "The Perceive-Reason-Act cognitive cycle",
+        "Relational database management",
+        "Cloud-native and serverless computing"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 60,
+      "question": "How does Agentic AI differ from classical Software Agents in terms of decision-making?",
+      "options": [
+        "Agentic AI uses symbolic or rule-based decision-making; classical agents use contextual LLM reasoning",
+        "Agentic AI uses contextual LLM-enhanced decision-making; classical agents use symbolic or rule-based logic",
+        "Both use identical rule-based approaches",
+        "Agentic AI requires a human to approve every decision; classical agents do not"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 61,
+      "question": "What does the course describe as the 'defining leap' of agent technology?",
+      "options": [
+        "Moving from monolithic services to microservices",
+        "Moving from reactive automation to purposeful action",
+        "Moving from synchronous to asynchronous execution",
+        "Moving from rule-based to supervised learning"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 62,
+      "question": "According to the course, what distinguishes a believable agent from an intelligent one?",
+      "options": [
+        "A believable agent must score higher on benchmark reasoning tests",
+        "A believable agent creates the illusion of a living personality rather than simulating reality",
+        "A believable agent must operate with zero latency",
+        "A believable agent requires a higher cognitive load than an intelligent agent"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 63,
+      "question": "Which of the six requirements for believability states that an agent must 'seem to want things' with intentional, purposeful actions?",
+      "options": [
+        "Consistency",
+        "Social Relationships",
+        "Appearance of Goals",
+        "Resource Bounded"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 64,
+      "question": "What does the 'Resource Bounded' requirement for believable agents mean?",
+      "options": [
+        "The agent has unlimited storage and compute",
+        "The agent must access cloud resources on every tick",
+        "The agent has cognitive and physical limits \u2014 perfect rationality breaks believability",
+        "The agent is restricted to a single programming language"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 65,
+      "question": "In the Hap Architecture, what are 'Primitive Actions'?",
+      "options": [
+        "High-level desires the agent pursues persistently",
+        "Context-sensitive plans chosen based on personality",
+        "Leaf-level executable steps such as animations, utterances, and movements",
+        "Emotional appraisal algorithms that compute blame and credit"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 66,
+      "question": "In the Hap Architecture, what is 'Situated Variation'?",
+      "options": [
+        "Agents moving across different hardware environments",
+        "Multiple behaviors available for the same goal, chosen based on context and personality",
+        "A hierarchical plan library with fixed execution paths",
+        "The decay of emotional intensity over time"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 67,
+      "question": "According to the Hap emotion model, how is emotion primarily expressed?",
+      "options": [
+        "As a separate output channel disconnected from behavior",
+        "Through how the agent acts \u2014 pace, style, and word choice \u2014 not just what it does",
+        "By halting the agent's actions until emotional intensity decays",
+        "Via a dedicated hardware display module"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 68,
+      "question": "What are the three stages of the emotion pipeline in the Hap Architecture?",
+      "options": [
+        "Ingestion \u2192 Pattern Detection \u2192 Decision Support",
+        "Perceive \u2192 Reason \u2192 Act",
+        "Emotion Generation \u2192 Emotion State \u2192 Emotional Expression",
+        "Goals \u2192 Behaviors \u2192 Primitive Actions"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 69,
+      "question": "What does the NLG approach in Hap use instead of hardcoded templates to generate agent speech?",
+      "options": [
+        "Static string arrays indexed by topic",
+        "Grammar rules implemented as Hap behaviors, executed like any other agent action",
+        "Unsupervised clustering of past utterances",
+        "External REST API calls to a language service"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 70,
+      "question": "According to the guidelines for building believable agents, why is generality considered 'bad believability'?",
+      "options": [
+        "General agents consume more compute resources",
+        "Believability requires a specific, artistically chosen character, not a generic one",
+        "General agents cannot interface with physical actuators",
+        "General code cannot run within the Hap architecture"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 71,
+      "question": "Which guideline for believable agents suggests that 'small irrational moments make characters feel alive'?",
+      "options": [
+        "Embrace Integration",
+        "Study the Arts",
+        "Irrationality Is OK",
+        "Expressive Primitive Tools"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 72,
+      "question": "In the Hap Architecture unified model, which of the following is NOT listed as an integrated capability?",
+      "options": [
+        "Personality Expression",
+        "Natural Language Generation",
+        "Blockchain Transaction Signing",
+        "Emotion Computation"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 73,
+      "question": "What is the first step in how collaborative agents learn, according to the five-step learning pipeline?",
+      "options": [
+        "Pattern Detection",
+        "Knowledge Extraction",
+        "Decision Support",
+        "Data Ingestion and Preprocessing"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 74,
+      "question": "In the multi-agent resume optimizer case study, which agent is responsible for rating documents 0\u2013100 for relevance, clarity, and impact?",
+      "options": [
+        "Enhancement Agent",
+        "Final Review Agent",
+        "Match & Gap Analyst",
+        "Scoring Agent"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 75,
+      "question": "In the multi-agent resume optimizer case study, which agent cross-checks grammar, coherence, and submission readiness?",
+      "options": [
+        "Resume Parser",
+        "Scoring Agent",
+        "Final Review Agent",
+        "Job Description Analyzer"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 76,
+      "question": "Which benefit of collaborative AI agents results from parallel processing and cross-verification between agents?",
+      "options": [
+        "Scalability",
+        "Improved Accuracy and Speed",
+        "Personalization",
+        "Continuous Improvement"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 77,
+      "question": "Which challenge of collaborative AI requires that systems guard against algorithmic unfairness and provide explainable reasoning?",
+      "options": [
+        "Interoperability",
+        "Data Privacy",
+        "Scalability",
+        "Bias and Transparency"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 78,
+      "question": "What is the key contribution of Wooldridge and Jennings (1990s) to agent theory?",
+      "options": [
+        "They invented the Actor Model with asynchronous message passing",
+        "They categorised agents along a spectrum from reactive to deliberative and emphasised distributed action",
+        "They published the first formal definition of the Perceive-Reason-Act loop",
+        "They introduced the Pandemonium Model of autonomous demons"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 79,
+      "question": "According to the course, what does 'Social Ability' mean as a core characteristic of software agents?",
+      "options": [
+        "The agent has a social media profile for outreach",
+        "The agent communicates with other agents, humans, or systems using defined protocols",
+        "The agent autonomously updates its own goals without user input",
+        "The agent reacts immediately to all environmental stimuli"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 80,
+      "question": "Selfridge's 'demons' are described in the course as 'a surprisingly direct ancestor' of which modern software concept?",
+      "options": [
+        "Relational database triggers",
+        "Blockchain smart contracts",
+        "Modern microagents and serverless functions",
+        "Monolithic enterprise resource planning systems"
       ],
       "correctAnswer": 2
     }
