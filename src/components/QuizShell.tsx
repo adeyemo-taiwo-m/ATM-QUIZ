@@ -244,129 +244,169 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
   // ── IDLE / START SCREEN ──────────────────────────────────────────────────
   if (state === "idle") {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center px-4 py-12 relative z-10">
+      <main className="flex min-h-screen flex-col items-center justify-center px-4 py-12 relative z-10 w-full max-w-5xl mx-auto">
         {/* Glow blobs */}
-        <div className="absolute top-1/4 left-1/3 w-80 h-80 rounded-full bg-brand-600/10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 rounded-full bg-indigo-600/10 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand-600/10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-indigo-600/10 blur-3xl pointer-events-none" />
 
-        <div className="max-w-xl w-full text-center space-y-6">
-          <span className="inline-flex rounded-full bg-brand-500/10 border border-brand-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-300">
-            {meta.course}
-          </span>
-          <h1 className="text-3xl md:text-4xl font-extrabold leading-tight text-white tracking-tight">
-            {meta.title}
-          </h1>
-          <p className="text-slate-400 text-sm md:text-base font-medium max-w-md mx-auto">
-            {activeCourse.description}
-          </p>
-
-          <div className="bg-slate-900/30 border border-slate-800/80 rounded-3xl p-5 md:p-6 text-left glass-card space-y-5">
-            {/* Course Selector Section */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                Select Course Assessment
-              </label>
-              <div className="relative">
-                <select
-                  value={selectedCourseId}
-                  onChange={(e) => {
-                    const nextCourseId = e.target.value;
-                    setSelectedCourseId(nextCourseId);
-                    const targetCourse = courses.find((c) => c.id === nextCourseId);
-                    if (targetCourse) {
-                      setAnswers(Array(targetCourse.data.questions.length).fill(-1));
-                    }
-                  }}
-                  className="w-full bg-slate-950/80 border border-slate-850 rounded-xl px-4 py-3.5 text-xs md:text-sm text-slate-200 focus:outline-none focus:border-brand-500 cursor-pointer appearance-none"
-                >
-                  {courses.map((course) => (
-                    <option key={course.id} value={course.id}>
-                      {course.name}
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 text-xs">
-                  ▼
-                </div>
-              </div>
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Left Column: Course Intro (6 cols) */}
+          <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
+            <div>
+              <span className="inline-flex rounded-full bg-brand-500/10 border border-brand-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-300 mb-4">
+                {meta.course} Assessment Portal
+              </span>
+              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-white tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent">
+                {meta.title}
+              </h1>
             </div>
-            <h2 className="text-sm font-bold uppercase tracking-widest text-slate-400 border-b border-slate-850 pb-2">
-              Quiz Setup Options
-            </h2>
-            
-            <div className="space-y-4">
-              {/* Shuffle toggle */}
-              <label className="flex items-center justify-between cursor-pointer group">
-                <div>
-                  <span className="text-sm font-semibold text-slate-250 block">Shuffle Questions</span>
-                  <span className="text-xs text-slate-500">Randomize question order each attempt</span>
-                </div>
-                <input
-                  type="checkbox"
-                  checked={settings.shuffleQuestions}
-                  onChange={(e) => setSettings({ ...settings, shuffleQuestions: e.target.checked })}
-                  className="w-4 h-4 rounded text-brand-600 bg-slate-900 border-slate-700 focus:ring-brand-500 cursor-pointer"
-                />
-              </label>
-
-              {/* LocalStorage toggle */}
-              <label className="flex items-center justify-between cursor-pointer group">
-                <div>
-                  <span className="text-sm font-semibold text-slate-250 block">Preserve Progress</span>
-                  <span className="text-xs text-slate-500">Auto-save answers to local storage</span>
-                </div>
-                <input
-                  type="checkbox"
-                  checked={settings.enableLocalStorage}
-                  onChange={(e) => setSettings({ ...settings, enableLocalStorage: e.target.checked })}
-                  className="w-4 h-4 rounded text-brand-600 bg-slate-900 border-slate-700 focus:ring-brand-500 cursor-pointer"
-                />
-              </label>
-
-              {/* Instant Feedback toggle */}
-              <label className="flex items-center justify-between cursor-pointer group">
-                <div>
-                  <span className="text-sm font-semibold text-slate-250 block">Instant Feedback Mode</span>
-                  <span className="text-xs text-slate-500">Reveal correct answer immediately upon selection</span>
-                </div>
-                <input
-                  type="checkbox"
-                  checked={settings.instantFeedback}
-                  onChange={(e) => setSettings({ ...settings, instantFeedback: e.target.checked })}
-                  className="w-4 h-4 rounded text-brand-600 bg-slate-900 border-slate-700 focus:ring-brand-500 cursor-pointer"
-                />
-              </label>
-
-              {/* Timer options */}
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <span className="text-sm font-semibold text-slate-250 block">Question Time Limit</span>
-                  <span className="text-xs text-slate-500">Autocompletes question upon expiry</span>
-                </div>
-                <select
-                  value={settings.timeLimitPerQuestion}
-                  onChange={(e) => setSettings({ ...settings, timeLimitPerQuestion: Number(e.target.value) })}
-                  className="bg-slate-950/80 border border-slate-850 rounded-xl px-3 py-2 text-xs md:text-sm text-slate-350 focus:outline-none focus:border-brand-500 cursor-pointer"
-                >
-                  <option value={0}>No limit</option>
-                  <option value={15}>15 seconds</option>
-                  <option value={30}>30 seconds</option>
-                  <option value={60}>60 seconds</option>
-                </select>
-              </div>
+            <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
+              {activeCourse.description}
+            </p>
+            <div className="hidden lg:flex items-center gap-6 text-xs text-slate-500 font-semibold uppercase tracking-wider">
+              <span className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                {meta.totalQuestions} Questions
+              </span>
+              <span className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Pass Mark: {meta.passMark} ({Math.round((meta.passMark / meta.totalQuestions) * 100)}%)
+              </span>
             </div>
           </div>
 
-          <div className="pt-4 flex flex-col items-center gap-2">
-            <button
-              onClick={startQuiz}
-              className="w-full sm:w-auto px-10 py-3.5 rounded-xl font-bold uppercase tracking-wider premium-btn text-white text-sm cursor-pointer"
-            >
-              Start Assessment
-            </button>
-            <span className="text-slate-500 text-xs mt-2">
-              {meta.totalQuestions} questions · Requires {meta.passMark} to pass
-            </span>
+          {/* Right Column: Settings & Launch (6 cols) */}
+          <div className="lg:col-span-6 w-full max-w-xl mx-auto">
+            <div className="bg-slate-900/30 border border-slate-800/80 rounded-3xl p-6 md:p-8 text-left glass-card space-y-6 relative overflow-hidden">
+              {/* Top gradient border for setting panel */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-500 to-transparent opacity-40" />
+
+              <h2 className="text-base font-bold uppercase tracking-widest text-slate-350 border-b border-slate-850 pb-3 flex items-center gap-2">
+                <svg className="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Assessment Setup
+              </h2>
+
+              <div className="space-y-5">
+                {/* Course Selector Section */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-widest text-slate-500 flex items-center gap-1.5">
+                    Select Course
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={selectedCourseId}
+                      onChange={(e) => {
+                        const nextCourseId = e.target.value;
+                        setSelectedCourseId(nextCourseId);
+                        const targetCourse = courses.find((c) => c.id === nextCourseId);
+                        if (targetCourse) {
+                          setAnswers(Array(targetCourse.data.questions.length).fill(-1));
+                        }
+                      }}
+                      className="w-full bg-slate-950/80 border border-slate-850 rounded-xl px-4 py-3 text-xs md:text-sm text-slate-200 focus:outline-none focus:border-brand-500 cursor-pointer appearance-none animate-none"
+                    >
+                      {courses.map((course) => (
+                        <option key={course.id} value={course.id}>
+                          {course.name}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 text-xs">
+                      ▼
+                    </div>
+                  </div>
+                </div>
+
+                {/* Toggles Group */}
+                <div className="space-y-4 border-t border-slate-850 pt-4">
+                  {/* Shuffle toggle */}
+                  <label className="flex items-center justify-between cursor-pointer group">
+                    <div className="pr-4">
+                      <span className="text-sm font-semibold text-slate-250 block">Shuffle Questions</span>
+                      <span className="text-xs text-slate-500">Randomize question order each attempt</span>
+                    </div>
+                    <div className="relative">
+                      <input
+                        type="checkbox"
+                        checked={settings.shuffleQuestions}
+                        onChange={(e) => setSettings({ ...settings, shuffleQuestions: e.target.checked })}
+                        className="sr-only peer"
+                        id="toggle-shuffle"
+                      />
+                      <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
+                    </div>
+                  </label>
+
+                  {/* LocalStorage toggle */}
+                  <label className="flex items-center justify-between cursor-pointer group border-t border-slate-850/50 pt-3.5">
+                    <div className="pr-4">
+                      <span className="text-sm font-semibold text-slate-250 block">Preserve Progress</span>
+                      <span className="text-xs text-slate-500">Auto-save answers to local storage</span>
+                    </div>
+                    <div className="relative">
+                      <input
+                        type="checkbox"
+                        checked={settings.enableLocalStorage}
+                        onChange={(e) => setSettings({ ...settings, enableLocalStorage: e.target.checked })}
+                        className="sr-only peer"
+                        id="toggle-localStorage"
+                      />
+                      <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
+                    </div>
+                  </label>
+
+                  {/* Instant Feedback toggle */}
+                  <label className="flex items-center justify-between cursor-pointer group border-t border-slate-850/50 pt-3.5">
+                    <div className="pr-4">
+                      <span className="text-sm font-semibold text-slate-250 block">Instant Feedback Mode</span>
+                      <span className="text-xs text-slate-500">Reveal correct answers immediately</span>
+                    </div>
+                    <div className="relative">
+                      <input
+                        type="checkbox"
+                        checked={settings.instantFeedback}
+                        onChange={(e) => setSettings({ ...settings, instantFeedback: e.target.checked })}
+                        className="sr-only peer"
+                        id="toggle-feedback"
+                      />
+                      <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
+                    </div>
+                  </label>
+                </div>
+
+                {/* Timer options dropdown */}
+                <div className="flex items-center justify-between gap-4 border-t border-slate-850 pt-4">
+                  <div>
+                    <span className="text-sm font-semibold text-slate-250 block">Question Time Limit</span>
+                    <span className="text-xs text-slate-500">Autocompletes upon expiry</span>
+                  </div>
+                  <select
+                    value={settings.timeLimitPerQuestion}
+                    onChange={(e) => setSettings({ ...settings, timeLimitPerQuestion: Number(e.target.value) })}
+                    className="bg-slate-950/80 border border-slate-850 rounded-xl px-3 py-2 text-xs md:text-sm text-slate-350 focus:outline-none focus:border-brand-500 cursor-pointer"
+                  >
+                    <option value={0}>No limit</option>
+                    <option value={15}>15 seconds</option>
+                    <option value={30}>30 seconds</option>
+                    <option value={60}>60 seconds</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Start Action Panel */}
+              <div className="pt-4 flex flex-col items-center gap-3">
+                <button
+                  onClick={startQuiz}
+                  className="w-full px-10 py-4 rounded-xl font-bold uppercase tracking-wider premium-btn text-white text-sm cursor-pointer"
+                >
+                  Start Assessment
+                </button>
+                <div className="flex justify-between w-full text-[10px] text-slate-550 uppercase tracking-widest font-semibold px-1 lg:hidden">
+                  <span>{meta.totalQuestions} Questions</span>
+                  <span>Pass: {meta.passMark}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
