@@ -32,6 +32,7 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
   const [current, setCurrent] = useState(0); // Index of current question in activeQuestions array
   const [answers, setAnswers] = useState<number[]>(() => Array(questions.length).fill(-1));
   const [timeSpent, setTimeSpent] = useState(0); // Total seconds spent on quiz
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false);
 
   // Active list of questions (could be shuffled)
   const [activeQuestions, setActiveQuestions] = useState<ShuffledQuestion[]>([]);
@@ -450,9 +451,17 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
           <span className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse" />
           {meta.course} assessment
         </span>
-        <span className="font-mono text-slate-500">
-          Elapsed: {formatTimeSpent(timeSpent)}
-        </span>
+        <div className="flex items-center gap-4">
+          <span className="font-mono text-slate-500">
+            Elapsed: {formatTimeSpent(timeSpent)}
+          </span>
+          <button
+            onClick={() => setShowQuitConfirm(true)}
+            className="text-red-405 hover:text-red-300 font-bold uppercase tracking-wider text-[10px] border border-red-500/25 bg-red-500/5 hover:bg-red-500/10 px-2.5 py-1 rounded-lg transition-all duration-200 cursor-pointer"
+          >
+            Quit
+          </button>
+        </div>
       </div>
 
       {/* Progress & Time tracking */}
@@ -521,6 +530,36 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
           {current === activeQuestions.length - 1 ? "Submit Report" : "Next →"}
         </button>
       </div>
+
+      {/* Quit Confirmation Modal Overlay */}
+      {showQuitConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-[#0b081e] p-6 md:p-8 shadow-2xl relative">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-50" />
+            <h3 className="text-lg font-bold text-white mb-2">Quit Assessment?</h3>
+            <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+              Are you sure you want to quit the assessment? Your current session progress will be reset.
+            </p>
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setShowQuitConfirm(false)}
+                className="px-4 py-2 text-xs md:text-sm font-semibold rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-slate-100 transition duration-200 cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setShowQuitConfirm(false);
+                  restartQuiz(); // Reset progress and return to onboarding screen
+                }}
+                className="px-5 py-2.5 text-xs md:text-sm font-bold uppercase tracking-wider rounded-xl bg-red-650 hover:bg-red-550 text-white transition duration-200 cursor-pointer shadow-[0_4px_14px_rgba(239,68,68,0.35)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.45)]"
+              >
+                Yes, Quit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
