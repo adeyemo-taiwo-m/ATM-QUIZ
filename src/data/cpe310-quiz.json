@@ -1,0 +1,340 @@
+{
+  "meta": {
+    "title": "CPE310 – Agent-Based Systems Quiz",
+    "course": "CPE310",
+    "totalQuestions": 30,
+    "passMark": 21
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "What are the three submodules contained within the Cognitive Module?",
+      "options": [
+        "Goals, Planning, Decision-Making",
+        "Physical, Integrated, Tool",
+        "Short-Term, Long-Term, Vector Store",
+        "Text, Audio, Sensor"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 2,
+      "question": "Under the three pillars, \"Autonomy\" requires that an agent can:",
+      "options": [
+        "Execute tasks synchronously within a single web request",
+        "Receive line-by-line user prompts to complete every step",
+        "Operate independently and manage its own lifecycle without hardcoded control flows",
+        "Bypass system security protocols safely"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 3,
+      "question": "What loop forms the mental framework guiding all agent behavior?",
+      "options": [
+        "In-Context → Fine-Tuning → Deployment",
+        "Synchronous → Blocking → Resolved",
+        "Perceive → Reason → Act",
+        "Ingest → Extract → Detect"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 4,
+      "question": "Which modern technology or framework is considered a descendant of the 1973 Actor Model?",
+      "options": [
+        "Erlang/OTP or the Akka framework",
+        "Punch-card processing units",
+        "Monolithic enterprise software",
+        "Relational database management systems"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 5,
+      "question": "If an agent does not require high intelligence to be believable, what matters more?",
+      "options": [
+        "Its underlying token processing speed",
+        "Its integration with cloud-native storage layers",
+        "Its capability to solve advanced calculus problems",
+        "Its emotional richness and consistency"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 6,
+      "question": "Which of the following is NOT one of the three core attributes of the Actor Model?",
+      "options": [
+        "Unsupervised administrative sorting",
+        "Distributed Collaborative Diagnostics",
+        "Asynchronous interaction",
+        "Isolation of state and behavior"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 7,
+      "question": "Which of the following is a primary purpose for the existence of software agents?",
+      "options": [
+        "To replace all generative AI weights with symbolic trees",
+        "To reduce human cognitive load by automating repetitive decisions at machine speed",
+        "To force all programs to run synchronously",
+        "To eliminate the need for cloud infrastructure"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 8,
+      "question": "In traditional agent reasoning, plans are derived from:",
+      "options": [
+        "Static plan libraries and pre-written hand-coded rules",
+        "High-dimensional vector space lookups",
+        "Unsupervised clustering of token feeds",
+        "Context-aware dynamic prompting"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 9,
+      "question": "Hierarchical task decomposition and chain-of-thought sequences are primary methods used by which submodule?",
+      "options": [
+        "Perception Submodule",
+        "Planning Submodule",
+        "Learning Submodule",
+        "Physical Actuation Submodule"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 10,
+      "question": "According to the course design principles, when should you use traditional agents instead of Agentic AI?",
+      "options": [
+        "For open-ended, contextual tasks requiring generalized reasoning",
+        "When you need creative text and expressive sentence variations",
+        "When building complex multi-step research pipelines without rules",
+        "For deterministic, rule-bound tasks"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 11,
+      "question": "What is the direct consequence of a poorly performing Perception Module?",
+      "options": [
+        "It increases the cost of prompt tokens linearly",
+        "It sets a low ceiling on performance, leading to bad reasoning and bad actions",
+        "The agent runs out of storage space immediately",
+        "The agent changes its primary goal matrix automatically"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 12,
+      "question": "What level of autonomy distinguishes Agentic AI from classical Software Agents?",
+      "options": [
+        "Both are completely bounded by static decision trees with no decision scope",
+        "Classical agents operate within predefined bounds; Agentic AI exhibits high autonomy with adaptive strategies",
+        "Agentic AI has zero autonomy and relies entirely on user triggers",
+        "Classical agents use adaptive strategies; Agentic AI uses predefined bounds"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 13,
+      "question": "Invoking cloud services like AWS Lambda, SQS, or updating database records constitutes:",
+      "options": [
+        "Integrated Interaction",
+        "Unsupervised Learning",
+        "Semantic Interpretation",
+        "Physical Actuation"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 14,
+      "question": "Complete the key distinction: Believable does NOT equal ________.",
+      "options": [
+        "Consistent",
+        "Autonomous",
+        "Realistic",
+        "Interactive"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 15,
+      "question": "How is \"proactivity\" distinguished from mere \"reactivity\" in agent design?",
+      "options": [
+        "Proactivity requires a graphic user interface",
+        "Proactivity means processing inputs synchronously",
+        "Proactivity initiates behavior in pursuit of goals rather than waiting for triggers",
+        "Proactivity avoids communication with other agents"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 16,
+      "question": "What is the function of the Decision-Making Submodule?",
+      "options": [
+        "It logs system data for audit purposes",
+        "It expands the active context window size",
+        "It evaluates available plans and actions, weighing conflicting goals next",
+        "It extracts acoustic features from audio waves"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 17,
+      "question": "According to Nwana (1996), how many core characteristics form the backbone of agent design?",
+      "options": [
+        "Six",
+        "Three",
+        "Four",
+        "Nine"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 18,
+      "question": "Compare the execution style of Traditional AI versus Agentic AI.",
+      "options": [
+        "Traditional AI is event-driven; Agentic AI is strictly batch synchronous",
+        "Traditional AI is batch/synchronous; Agentic AI is asynchronous, event-driven, and goal-driven",
+        "Traditional AI has high autonomy; Agentic AI requires human orchestration for every step",
+        "There is no difference; both require identical hardcoded workflows"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 19,
+      "question": "What is a primary risk or disadvantage associated with traditional symbolic agent reasoning?",
+      "options": [
+        "Brittleness when encountering unforeseen situations",
+        "Hallucinations and creative fabrication",
+        "High cost of prompt tokens",
+        "Non-deterministic, unpredictable paths"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 20,
+      "question": "What type of diagnostics combine imaging, genetics, and clinical information through specialized agent networks?",
+      "options": [
+        "Distributed Collaborative Diagnostics",
+        "Hardcoded hardware sensor loops",
+        "Unsupervised administrative sorting",
+        "Monolithic single-model triage"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 21,
+      "question": "For an LLM-based agent, what serves effectively as the initial perception step?",
+      "options": [
+        "Executing an external Python script",
+        "Tokenization of text inputs to convert user intent into a structured representation",
+        "Querying an external vector index",
+        "Running an API database patch"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 22,
+      "question": "What is the fundamental leap that separates a simple chatbot from an autonomous AI assistant?",
+      "options": [
+        "Moving from reactive automation to purposeful action (Agency)",
+        "The introduction of colored user interfaces",
+        "Restricting behavior to hardcoded decision trees",
+        "Processing inputs in a synchronous blocking loop"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 23,
+      "question": "In collaborative multi-agent systems, division of labor relies directly on which principle?",
+      "options": [
+        "Overwriting shared data repositories continuously",
+        "Centralized sequential processing",
+        "Agent specialization where each mind handles distinct sub-tasks",
+        "Eliminating communication links between active modules"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 24,
+      "question": "Which attribute refers to an agent making decisions and acting independently based on environmental perception?",
+      "options": [
+        "Autonomy",
+        "Proactivity",
+        "Reactivity",
+        "Delegation"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 25,
+      "question": "According to the building blocks analogy, if the perception module represents \"senses,\" what does the action module represent?",
+      "options": [
+        "Context",
+        "Hands",
+        "Memory",
+        "Brain"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 26,
+      "question": "What does an agent do inside the \"Perceive\" phase of the cognitive cycle?",
+      "options": [
+        "Selects a plan from its pre-stored library",
+        "Evaluates conflicting organizational goals",
+        "Gathers raw inputs or API signals and updates its internal representation or beliefs",
+        "Triggers physical actuators or web service calls"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 27,
+      "question": "Which requirement describes an agent's capability to operate safely across diverse platforms and organizations using standard protocols?",
+      "options": [
+        "Algorithmic Bias",
+        "Interoperability",
+        "Data Ingestion",
+        "Localized Isolation"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 28,
+      "question": "Which of the following is an application domain for believable agents mentioned in the materials?",
+      "options": [
+        "Multi-agent logistics and automated factory floors",
+        "Art, entertainment, interactive stories, and teaching systems",
+        "High-frequency financial trading systems",
+        "Distributed enterprise database sharding"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 29,
+      "question": "What does the \"continuity\" characteristic of a software agent imply?",
+      "options": [
+        "It reboots itself automatically after failure",
+        "It moves across different hardware environments instantly",
+        "It operates persistently over time without constant human intervention",
+        "It executes logic synchronously upon user request"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 30,
+      "question": "Which statement is true regarding an agent's Short-Term Memory?",
+      "options": [
+        "It requires massive retrieval-augmented indexing models",
+        "It persists indefinitely across weeks of idle time",
+        "It is typically lost between sessions if no persistence layer is added",
+        "It encodes hardcoded enterprise operating playbooks"
+      ],
+      "correctAnswer": 2
+    }
+  ]
+}
