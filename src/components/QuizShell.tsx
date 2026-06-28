@@ -250,29 +250,59 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand-600/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-indigo-600/10 blur-3xl pointer-events-none" />
 
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Column: Course Intro (6 cols) */}
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Left Column: Assessment Portal General Features (6 cols) */}
           <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
             <div>
               <span className="inline-flex rounded-full bg-brand-500/10 border border-brand-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-300 mb-4">
-                {meta.course} Assessment Portal
+                Interactive Study Engine
               </span>
               <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-white tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent">
-                {meta.title}
+                Smart Assessment Portal
               </h1>
             </div>
-            <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
-              {activeCourse.description}
+            <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
+              Welcome to the multi-course study and testing platform. Prepare for your examinations and test your knowledge using our powerful custom learning tools.
             </p>
-            <div className="hidden lg:flex items-center gap-6 text-xs text-slate-500 font-semibold uppercase tracking-wider">
-              <span className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                {meta.totalQuestions} Questions
-              </span>
-              <span className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                Pass Mark: {meta.passMark} ({Math.round((meta.passMark / meta.totalQuestions) * 100)}%)
-              </span>
+            
+            {/* Features Listing */}
+            <div className="space-y-4 pt-2 text-left max-w-md mx-auto lg:mx-0">
+              <div className="flex items-start gap-3">
+                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-brand-500/10 text-brand-400 mt-1">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18.2M7 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path></svg>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Dynamic Setup</h4>
+                  <p className="text-xs text-slate-500 mt-0.5">Toggle question shuffling and custom countdown timers to simulate real test environments.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-brand-500/10 text-brand-400 mt-1">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 113.536 0V21h2v-2.238a5.002 5.002 0 01-.012-.008z"></path></svg>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Instant Study Feedback</h4>
+                  <p className="text-xs text-slate-500 mt-0.5">Reveal correct answers immediately upon choice selection to build understanding as you go.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-brand-500/10 text-brand-400 mt-1">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Progress Cache Auto-Save</h4>
+                  <p className="text-xs text-slate-500 mt-0.5">Session state is safely saved to local storage, allowing you to reload the page without progress loss.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-brand-500/10 text-brand-400 mt-1">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586l6.828-6.828A6 6 0 1121 9z"></path></svg>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Accessibility Hotkeys</h4>
+                  <p className="text-xs text-slate-500 mt-0.5">Select choices using keys <code className="text-brand-350">A</code>, <code className="text-brand-350">B</code>, <code className="text-brand-350">C</code>, or <code className="text-brand-350">D</code> and submit answers with <code className="text-brand-350">Enter</code>.</p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -304,7 +334,7 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
                           setAnswers(Array(targetCourse.data.questions.length).fill(-1));
                         }
                       }}
-                      className="w-full bg-slate-950/80 border border-slate-850 rounded-xl px-4 py-3 text-xs md:text-sm text-slate-200 focus:outline-none focus:border-brand-500 cursor-pointer appearance-none animate-none"
+                      className="w-full bg-slate-950/80 border border-slate-850 rounded-xl px-4 py-3.5 text-xs md:text-sm text-slate-200 focus:outline-none focus:border-brand-500 cursor-pointer appearance-none animate-none"
                     >
                       {courses.map((course) => (
                         <option key={course.id} value={course.id}>
@@ -315,6 +345,33 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 text-xs">
                       ▼
                     </div>
+                  </div>
+                </div>
+
+                {/* Selected Course Metadata Sub-Card */}
+                <div className="bg-slate-950/45 border border-slate-850/80 rounded-2xl p-4 space-y-2 relative overflow-hidden transition-all duration-300">
+                  <div className="absolute top-0 left-0 bottom-0 w-[3px] bg-brand-500/80" />
+                  <div className="flex justify-between items-center text-[10px] font-bold text-slate-500">
+                    <span className="uppercase tracking-widest">Selected Course details</span>
+                    <span className="text-brand-350 bg-brand-500/10 border border-brand-500/20 px-2 py-0.5 rounded text-[9px] uppercase tracking-wider font-extrabold">
+                      {meta.course}
+                    </span>
+                  </div>
+                  <p className="text-xs md:text-sm font-bold text-slate-205 leading-snug">
+                    {meta.title}
+                  </p>
+                  <p className="text-[11px] text-slate-500 leading-normal font-medium">
+                    {activeCourse.description}
+                  </p>
+                  <div className="flex gap-4 pt-2.5 text-[10px] text-slate-500 uppercase tracking-wider font-bold border-t border-slate-850/50">
+                    <span className="flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                      {meta.totalQuestions} Questions
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                      Pass mark: {meta.passMark}
+                    </span>
                   </div>
                 </div>
 
@@ -402,10 +459,6 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
                 >
                   Start Assessment
                 </button>
-                <div className="flex justify-between w-full text-[10px] text-slate-550 uppercase tracking-widest font-semibold px-1 lg:hidden">
-                  <span>{meta.totalQuestions} Questions</span>
-                  <span>Pass: {meta.passMark}</span>
-                </div>
               </div>
             </div>
           </div>
