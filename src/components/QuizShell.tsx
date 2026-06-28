@@ -30,6 +30,7 @@ export default function QuizShell({ data }: { data: QuizData }) {
     shuffleQuestions: false,
     timeLimitPerQuestion: 0,
     enableLocalStorage: true,
+    instantFeedback: false,
   });
 
   // Timer per question (seconds remaining)
@@ -126,6 +127,15 @@ export default function QuizShell({ data }: { data: QuizData }) {
   // Question Timer Effect
   useEffect(() => {
     if (state === "running" && settings.timeLimitPerQuestion > 0) {
+      const originalIndex = activeQuestions[current]?.originalIndex;
+      const isCurrentAnswered = originalIndex !== undefined && answers[originalIndex] !== -1;
+      
+      // Pause timer when feedback is shown
+      if (settings.instantFeedback && isCurrentAnswered) {
+        if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+        return;
+      }
+
       // Initialize time limit for the question
       setTimeLeft(settings.timeLimitPerQuestion);
 
@@ -149,7 +159,7 @@ export default function QuizShell({ data }: { data: QuizData }) {
     return () => {
       if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
     };
-  }, [state, current, settings.timeLimitPerQuestion]);
+  }, [state, current, settings.timeLimitPerQuestion, answers, settings.instantFeedback, activeQuestions]);
 
   const handleTimeout = () => {
     // Current active question index
@@ -267,6 +277,20 @@ export default function QuizShell({ data }: { data: QuizData }) {
                   type="checkbox"
                   checked={settings.enableLocalStorage}
                   onChange={(e) => setSettings({ ...settings, enableLocalStorage: e.target.checked })}
+                  className="w-4 h-4 rounded text-brand-600 bg-slate-900 border-slate-700 focus:ring-brand-500 cursor-pointer"
+                />
+              </label>
+
+              {/* Instant Feedback toggle */}
+              <label className="flex items-center justify-between cursor-pointer group">
+                <div>
+                  <span className="text-sm font-semibold text-slate-250 block">Instant Feedback Mode</span>
+                  <span className="text-xs text-slate-500">Reveal correct answer immediately upon selection</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={settings.instantFeedback}
+                  onChange={(e) => setSettings({ ...settings, instantFeedback: e.target.checked })}
                   className="w-4 h-4 rounded text-brand-600 bg-slate-900 border-slate-700 focus:ring-brand-500 cursor-pointer"
                 />
               </label>
@@ -390,6 +414,7 @@ export default function QuizShell({ data }: { data: QuizData }) {
           question={q}
           selected={answers[originalIndex]}
           onSelect={selectAnswer}
+          showFeedback={settings.instantFeedback && isAnswered}
         />
       )}
 

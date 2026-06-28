@@ -23,4 +23,5 @@ export interface QuizSettings {
   shuffleQuestions: boolean;
   timeLimitPerQuestion: number; // in seconds, 0 means no limit
   enableLocalStorage: boolean;
+  instantFeedback: boolean;
 }
