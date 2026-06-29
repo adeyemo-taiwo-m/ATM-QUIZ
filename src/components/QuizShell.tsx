@@ -245,221 +245,145 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
   // ── IDLE / START SCREEN ──────────────────────────────────────────────────
   if (state === "idle") {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center px-4 py-12 relative z-10 w-full max-w-5xl mx-auto">
+      <main className="flex min-h-screen flex-col items-center justify-center px-4 py-12 relative z-10 w-full max-w-md mx-auto">
         {/* Glow blobs */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand-600/10 blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-indigo-600/10 blur-3xl pointer-events-none" />
 
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Assessment Portal General Features (6 cols) */}
-          <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
-            <div>
-              <span className="inline-flex rounded-full bg-brand-500/10 border border-brand-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-300 mb-4">
-                Interactive Study Engine
-              </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-white tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent">
-                Smart Assessment Portal
-              </h1>
-            </div>
-            <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
-              Welcome to the multi-course study and testing platform. Prepare for your examinations and test your knowledge using our powerful custom learning tools.
+        <div className="w-full space-y-6 text-center">
+          {/* Simple Centered Header */}
+          <div className="space-y-2">
+            <h1 className="text-3xl font-extrabold text-white tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent">
+              Assessment Portal
+            </h1>
+            <p className="text-slate-400 text-sm font-medium">
+              Select your course and customize settings to begin.
             </p>
-            
-            {/* Features Listing */}
-            <div className="space-y-4 pt-2 text-left max-w-md mx-auto lg:mx-0">
-              <div className="flex items-start gap-3">
-                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-brand-500/10 text-brand-400 mt-1">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18.2M7 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path></svg>
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Dynamic Setup</h4>
-                  <p className="text-xs text-slate-500 mt-0.5">Toggle question shuffling and custom countdown timers to simulate real test environments.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-brand-500/10 text-brand-400 mt-1">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 113.536 0V21h2v-2.238a5.002 5.002 0 01-.012-.008z"></path></svg>
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Instant Study Feedback</h4>
-                  <p className="text-xs text-slate-500 mt-0.5">Reveal correct answers immediately upon choice selection to build understanding as you go.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-brand-500/10 text-brand-400 mt-1">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Progress Cache Auto-Save</h4>
-                  <p className="text-xs text-slate-500 mt-0.5">Session state is safely saved to local storage, allowing you to reload the page without progress loss.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-brand-500/10 text-brand-400 mt-1">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586l6.828-6.828A6 6 0 1121 9z"></path></svg>
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">Accessibility Hotkeys</h4>
-                  <p className="text-xs text-slate-500 mt-0.5">Select choices using keys <code className="text-brand-350">A</code>, <code className="text-brand-350">B</code>, <code className="text-brand-350">C</code>, or <code className="text-brand-350">D</code> and submit answers with <code className="text-brand-350">Enter</code>.</p>
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* Right Column: Settings & Launch (6 cols) */}
-          <div className="lg:col-span-6 w-full max-w-xl mx-auto">
-            <div className="bg-slate-900/30 border border-slate-800/80 rounded-3xl p-6 md:p-8 text-left glass-card space-y-6 relative overflow-hidden">
-              {/* Top gradient border for setting panel */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-500 to-transparent opacity-40" />
+          {/* Settings & Launch Card */}
+          <div className="w-full bg-slate-900/30 border border-slate-800/80 rounded-3xl p-6 text-left glass-card space-y-5 relative overflow-hidden">
+            {/* Top gradient border for setting panel */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-500 to-transparent opacity-40" />
 
-              <h2 className="text-base font-bold uppercase tracking-widest text-slate-350 border-b border-slate-850 pb-3 flex items-center gap-2">
-                <svg className="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                Assessment Setup
-              </h2>
+            <h2 className="text-xs font-bold uppercase tracking-widest text-slate-400 border-b border-slate-850 pb-2.5 flex items-center gap-2">
+              <svg className="w-3.5 h-3.5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              Assessment Setup
+            </h2>
 
-              <div className="space-y-5">
-                {/* Course Selector Section */}
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-slate-500 flex items-center gap-1.5">
-                    Select Course
-                  </label>
-                  <div className="relative">
-                    <select
-                      value={selectedCourseId}
-                      onChange={(e) => {
-                        const nextCourseId = e.target.value;
-                        setSelectedCourseId(nextCourseId);
-                        const targetCourse = courses.find((c) => c.id === nextCourseId);
-                        if (targetCourse) {
-                          setAnswers(Array(targetCourse.data.questions.length).fill(-1));
-                        }
-                      }}
-                      className="w-full bg-slate-950/80 border border-slate-850 rounded-xl px-4 py-3.5 text-xs md:text-sm text-slate-200 focus:outline-none focus:border-brand-500 cursor-pointer appearance-none animate-none"
-                    >
-                      {courses.map((course) => (
-                        <option key={course.id} value={course.id}>
-                          {course.name}
-                        </option>
-                      ))}
-                    </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 text-xs">
-                      ▼
-                    </div>
-                  </div>
-                </div>
-
-                {/* Selected Course Metadata Sub-Card */}
-                <div className="bg-slate-950/45 border border-slate-850/80 rounded-2xl p-4 space-y-2 relative overflow-hidden transition-all duration-300">
-                  <div className="absolute top-0 left-0 bottom-0 w-[3px] bg-brand-500/80" />
-                  <div className="flex justify-between items-center text-[10px] font-bold text-slate-500">
-                    <span className="uppercase tracking-widest">Selected Course details</span>
-                    <span className="text-brand-350 bg-brand-500/10 border border-brand-500/20 px-2 py-0.5 rounded text-[9px] uppercase tracking-wider font-extrabold">
-                      {meta.course}
-                    </span>
-                  </div>
-                  <p className="text-xs md:text-sm font-bold text-slate-205 leading-snug">
-                    {meta.title}
-                  </p>
-                  <p className="text-[11px] text-slate-500 leading-normal font-medium">
-                    {activeCourse.description}
-                  </p>
-                  <div className="flex gap-4 pt-2.5 text-[10px] text-slate-500 uppercase tracking-wider font-bold border-t border-slate-850/50">
-                    <span className="flex items-center gap-1.5">
-                      <svg className="w-3.5 h-3.5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                      {meta.totalQuestions} Questions
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                      Pass mark: {meta.passMark}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Toggles Group */}
-                <div className="space-y-4 border-t border-slate-850 pt-4">
-                  {/* Shuffle toggle */}
-                  <label className="flex items-center justify-between cursor-pointer group">
-                    <div className="pr-4">
-                      <span className="text-sm font-semibold text-slate-250 block">Shuffle Questions</span>
-                      <span className="text-xs text-slate-500">Randomize question order each attempt</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        type="checkbox"
-                        checked={settings.shuffleQuestions}
-                        onChange={(e) => setSettings({ ...settings, shuffleQuestions: e.target.checked })}
-                        className="sr-only peer"
-                        id="toggle-shuffle"
-                      />
-                      <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
-                    </div>
-                  </label>
-
-                  {/* LocalStorage toggle */}
-                  <label className="flex items-center justify-between cursor-pointer group border-t border-slate-850/50 pt-3.5">
-                    <div className="pr-4">
-                      <span className="text-sm font-semibold text-slate-250 block">Preserve Progress</span>
-                      <span className="text-xs text-slate-500">Auto-save answers to local storage</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        type="checkbox"
-                        checked={settings.enableLocalStorage}
-                        onChange={(e) => setSettings({ ...settings, enableLocalStorage: e.target.checked })}
-                        className="sr-only peer"
-                        id="toggle-localStorage"
-                      />
-                      <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
-                    </div>
-                  </label>
-
-                  {/* Instant Feedback toggle */}
-                  <label className="flex items-center justify-between cursor-pointer group border-t border-slate-850/50 pt-3.5">
-                    <div className="pr-4">
-                      <span className="text-sm font-semibold text-slate-250 block">Instant Feedback Mode</span>
-                      <span className="text-xs text-slate-500">Reveal correct answers immediately</span>
-                    </div>
-                    <div className="relative">
-                      <input
-                        type="checkbox"
-                        checked={settings.instantFeedback}
-                        onChange={(e) => setSettings({ ...settings, instantFeedback: e.target.checked })}
-                        className="sr-only peer"
-                        id="toggle-feedback"
-                      />
-                      <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
-                    </div>
-                  </label>
-                </div>
-
-                {/* Timer options dropdown */}
-                <div className="flex items-center justify-between gap-4 border-t border-slate-850 pt-4">
-                  <div>
-                    <span className="text-sm font-semibold text-slate-250 block">Question Time Limit</span>
-                    <span className="text-xs text-slate-500">Autocompletes upon expiry</span>
-                  </div>
+            <div className="space-y-4">
+              {/* Course Selector Section */}
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                  Select Course
+                </label>
+                <div className="relative">
                   <select
-                    value={settings.timeLimitPerQuestion}
-                    onChange={(e) => setSettings({ ...settings, timeLimitPerQuestion: Number(e.target.value) })}
-                    className="bg-slate-950/80 border border-slate-850 rounded-xl px-3 py-2 text-xs md:text-sm text-slate-350 focus:outline-none focus:border-brand-500 cursor-pointer"
+                    value={selectedCourseId}
+                    onChange={(e) => {
+                      const nextCourseId = e.target.value;
+                      setSelectedCourseId(nextCourseId);
+                      const targetCourse = courses.find((c) => c.id === nextCourseId);
+                      if (targetCourse) {
+                        setAnswers(Array(targetCourse.data.questions.length).fill(-1));
+                      }
+                    }}
+                    className="w-full bg-slate-950/80 border border-slate-850 rounded-xl px-4 py-2.5 text-xs md:text-sm text-slate-200 focus:outline-none focus:border-brand-500 cursor-pointer appearance-none animate-none"
                   >
-                    <option value={0}>No limit</option>
-                    <option value={15}>15 seconds</option>
-                    <option value={30}>30 seconds</option>
-                    <option value={60}>60 seconds</option>
+                    {courses.map((course) => (
+                      <option key={course.id} value={course.id}>
+                        {course.name}
+                      </option>
+                    ))}
                   </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 text-xs">
+                    ▼
+                  </div>
                 </div>
               </div>
 
-              {/* Start Action Panel */}
-              <div className="pt-4 flex flex-col items-center gap-3">
-                <button
-                  onClick={startQuiz}
-                  className="w-full px-10 py-4 rounded-xl font-bold uppercase tracking-wider premium-btn text-white text-sm cursor-pointer"
-                >
-                  Start Assessment
-                </button>
+              {/* Selected Course Metadata summary bar */}
+              <div className="flex items-center justify-between bg-slate-950/40 border border-slate-850/60 rounded-xl px-4 py-2 text-[11px] text-slate-400 font-medium">
+                <span className="font-semibold">{meta.totalQuestions} Questions</span>
+                <span className="h-4 w-px bg-slate-850" />
+                <span className="font-semibold">Pass mark: {meta.passMark} ({Math.round((meta.passMark / meta.totalQuestions) * 100)}%)</span>
               </div>
+
+              {/* Toggles Group */}
+              <div className="space-y-3.5 border-t border-slate-850 pt-3.5">
+                {/* Shuffle toggle */}
+                <label className="flex items-center justify-between cursor-pointer group">
+                  <span className="text-xs md:text-sm font-semibold text-slate-300">Shuffle Questions</span>
+                  <div className="relative">
+                    <input
+                      type="checkbox"
+                      checked={settings.shuffleQuestions}
+                      onChange={(e) => setSettings({ ...settings, shuffleQuestions: e.target.checked })}
+                      className="sr-only peer"
+                      id="toggle-shuffle"
+                    />
+                    <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
+                  </div>
+                </label>
+
+                {/* LocalStorage toggle */}
+                <label className="flex items-center justify-between cursor-pointer group border-t border-slate-850/40 pt-3">
+                  <span className="text-xs md:text-sm font-semibold text-slate-300">Preserve Progress</span>
+                  <div className="relative">
+                    <input
+                      type="checkbox"
+                      checked={settings.enableLocalStorage}
+                      onChange={(e) => setSettings({ ...settings, enableLocalStorage: e.target.checked })}
+                      className="sr-only peer"
+                      id="toggle-localStorage"
+                    />
+                    <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
+                  </div>
+                </label>
+
+                {/* Instant Feedback toggle */}
+                <label className="flex items-center justify-between cursor-pointer group border-t border-slate-850/40 pt-3">
+                  <span className="text-xs md:text-sm font-semibold text-slate-300">Instant Feedback Mode</span>
+                  <div className="relative">
+                    <input
+                      type="checkbox"
+                      checked={settings.instantFeedback}
+                      onChange={(e) => setSettings({ ...settings, instantFeedback: e.target.checked })}
+                      className="sr-only peer"
+                      id="toggle-feedback"
+                    />
+                    <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
+                  </div>
+                </label>
+              </div>
+
+              {/* Timer options dropdown */}
+              <div className="flex items-center justify-between gap-4 border-t border-slate-850 pt-3.5">
+                <span className="text-xs md:text-sm font-semibold text-slate-300">Question Time Limit</span>
+                <select
+                  value={settings.timeLimitPerQuestion}
+                  onChange={(e) => setSettings({ ...settings, timeLimitPerQuestion: Number(e.target.value) })}
+                  className="bg-slate-950/80 border border-slate-850 rounded-xl px-3 py-1.5 text-xs md:text-sm text-slate-300 focus:outline-none focus:border-brand-500 cursor-pointer"
+                >
+                  <option value={0}>No limit</option>
+                  <option value={15}>15 seconds</option>
+                  <option value={30}>30 seconds</option>
+                  <option value={60}>60 seconds</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Start Action Panel */}
+            <div className="pt-3">
+              <button
+                onClick={startQuiz}
+                className="w-full px-10 py-3.5 rounded-xl font-bold uppercase tracking-wider premium-btn text-white text-xs md:text-sm cursor-pointer"
+              >
+                Start Assessment
+              </button>
             </div>
           </div>
         </div>
@@ -467,6 +391,7 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
     );
   }
 
+  
   // ── RESULT SCREEN ────────────────────────────────────────────────────────
   if (state === "done") {
     return (
