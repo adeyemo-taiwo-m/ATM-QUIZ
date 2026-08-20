@@ -1,4 +1,4 @@
-{
+z{
   "meta": {
     "title": "CPE310 – Agent-Based Systems Quiz",
     "course": "CPE310",
@@ -22,7 +22,9 @@
       "question": "Under the three pillars, \"Autonomy\" requires that an agent can:",
       "options": [
         "Execute tasks synchronously within a single web request",
-        "Receive line-by-line user prompts to complete every step",
+        "Receive line-by-line user prompts to complete every s
+        
+        tep",
         "Operate independently and manage its own lifecycle without hardcoded control flows",
         "Bypass system security protocols safely"
       ],

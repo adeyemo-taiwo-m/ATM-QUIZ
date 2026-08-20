@@ -234,9 +234,9 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
   if (!mounted) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#030014] text-slate-100">
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-4">
           <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-700 border-t-brand-500" />
-          <span className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Loading assessment...</span>
+          <span className="text-slate-400 text-sm font-semibold tracking-wider uppercase">Loading Portal...</span>
         </div>
       </div>
     );
@@ -244,145 +244,189 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
 
   // ── IDLE / START SCREEN ──────────────────────────────────────────────────
   if (state === "idle") {
-    return (
-      <main className="flex min-h-screen flex-col items-center justify-center px-4 py-12 relative z-10 w-full max-w-md mx-auto">
-        {/* Glow blobs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand-600/10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-indigo-600/10 blur-3xl pointer-events-none" />
+    const passPercentage = Math.round((meta.passMark / meta.totalQuestions) * 100);
 
-        <div className="w-full space-y-6 text-center">
-          {/* Simple Centered Header */}
-          <div className="space-y-2">
-            <h1 className="text-3xl font-extrabold text-white tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent">
-              Assessment Portal
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 py-12 md:py-20 relative z-10 w-full max-w-xl mx-auto">
+        {/* Ambient glow backdrop */}
+        <div className="absolute top-1/4 -left-12 w-96 h-96 rounded-full bg-brand-600/10 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-12 w-96 h-96 rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none" />
+
+        <div className="w-full space-y-7">
+          {/* Header Section */}
+          <div className="text-center space-y-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs font-semibold tracking-wide shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse" />
+              Self-Assessment Portal
+            </div>
+            
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              Assessment Setup
             </h1>
-            <p className="text-slate-400 text-sm font-medium">
-              Select your course and customize settings to begin.
+            
+            <p className="text-slate-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+              Select your course and customize parameters before starting.
             </p>
           </div>
 
-          {/* Settings & Launch Card */}
-          <div className="w-full bg-slate-900/30 border border-slate-800/80 rounded-3xl p-6 text-left glass-card space-y-5 relative overflow-hidden">
-            {/* Top gradient border for setting panel */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-500 to-transparent opacity-40" />
+          {/* Main Configuration Card */}
+          <div className="w-full rounded-3xl glass-card p-6 sm:p-8 space-y-6 relative overflow-hidden border border-white/[0.08] shadow-2xl">
+            {/* Top subtle gradient line */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-400 to-transparent opacity-60" />
 
-            <h2 className="text-xs font-bold uppercase tracking-widest text-slate-400 border-b border-slate-850 pb-2.5 flex items-center gap-2">
-              <svg className="w-3.5 h-3.5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-              Assessment Setup
-            </h2>
-
-            <div className="space-y-4">
-              {/* Course Selector Section */}
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+            {/* Course Selector Group */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
                   Select Course
                 </label>
-                <div className="relative">
-                  <select
-                    value={selectedCourseId}
-                    onChange={(e) => {
-                      const nextCourseId = e.target.value;
-                      setSelectedCourseId(nextCourseId);
-                      const targetCourse = courses.find((c) => c.id === nextCourseId);
-                      if (targetCourse) {
-                        setAnswers(Array(targetCourse.data.questions.length).fill(-1));
-                      }
-                    }}
-                    className="w-full bg-slate-950/80 border border-slate-850 rounded-xl px-4 py-2.5 text-xs md:text-sm text-slate-200 focus:outline-none focus:border-brand-500 cursor-pointer appearance-none animate-none"
-                  >
-                    {courses.map((course) => (
-                      <option key={course.id} value={course.id}>
-                        {course.name}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 text-xs">
-                    ▼
-                  </div>
+                <span className="text-[11px] font-medium text-slate-500">
+                  {courses.length} course available
+                </span>
+              </div>
+
+              <div className="relative">
+                <select
+                  value={selectedCourseId}
+                  onChange={(e) => {
+                    const nextCourseId = e.target.value;
+                    setSelectedCourseId(nextCourseId);
+                    const targetCourse = courses.find((c) => c.id === nextCourseId);
+                    if (targetCourse) {
+                      setAnswers(Array(targetCourse.data.questions.length).fill(-1));
+                    }
+                  }}
+                  className="w-full bg-white/[0.025] hover:bg-white/[0.05] border border-white/[0.07] hover:border-white/[0.14] rounded-2xl px-4 py-3.5 text-sm md:text-base font-semibold text-slate-100 focus:outline-none focus:border-brand-500/80 focus:ring-2 focus:ring-brand-500/20 cursor-pointer appearance-none transition-all duration-200"
+                >
+                  {courses.map((course) => (
+                    <option key={course.id} value={course.id} className="bg-slate-900 text-slate-100 py-2">
+                      {course.name}
+                    </option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                  </svg>
                 </div>
               </div>
 
-              {/* Selected Course Metadata summary bar */}
-              <div className="flex items-center justify-between bg-slate-950/40 border border-slate-850/60 rounded-xl px-4 py-2 text-[11px] text-slate-400 font-medium">
-                <span className="font-semibold">{meta.totalQuestions} Questions</span>
-                <span className="h-4 w-px bg-slate-850" />
-                <span className="font-semibold">Pass mark: {meta.passMark} ({Math.round((meta.passMark / meta.totalQuestions) * 100)}%)</span>
-              </div>
+              {/* Course Meta Info Chips */}
+              <div className="grid grid-cols-2 gap-3 pt-1">
+                <div className="flex items-center gap-3 bg-white/[0.02] hover:bg-white/[0.045] border border-white/[0.06] hover:border-white/[0.12] rounded-2xl p-3.5 transition-all duration-200">
+                  <div className="w-8 h-8 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0 text-sm">
+                    📋
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Questions</span>
+                    <span className="text-sm font-bold text-slate-200">{meta.totalQuestions} Questions</span>
+                  </div>
+                </div>
 
-              {/* Toggles Group */}
-              <div className="space-y-3.5 border-t border-slate-850 pt-3.5">
-                {/* Shuffle toggle */}
-                <label className="flex items-center justify-between cursor-pointer group">
-                  <span className="text-xs md:text-sm font-semibold text-slate-300">Shuffle Questions</span>
-                  <div className="relative">
+                <div className="flex items-center gap-3 bg-white/[0.02] hover:bg-white/[0.045] border border-white/[0.06] hover:border-white/[0.12] rounded-2xl p-3.5 transition-all duration-200">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 shrink-0 text-sm">
+                    🎯
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Pass Threshold</span>
+                    <span className="text-sm font-bold text-emerald-400">{meta.passMark} ({passPercentage}%)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Preferences Group */}
+            <div className="space-y-3 pt-2 border-t border-white/[0.06]">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2 mb-3">
+                <svg className="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+                Assessment Preferences
+              </h2>
+
+              <div className="space-y-2.5">
+                {/* Shuffle Toggle */}
+                <label className="flex items-center justify-between px-4.5 py-3.5 rounded-2xl bg-white/[0.02] hover:bg-white/[0.055] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-200 cursor-pointer group">
+                  <span className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors">
+                    Shuffle Questions
+                  </span>
+                  <div className="relative shrink-0">
                     <input
                       type="checkbox"
                       checked={settings.shuffleQuestions}
                       onChange={(e) => setSettings({ ...settings, shuffleQuestions: e.target.checked })}
                       className="sr-only peer"
-                      id="toggle-shuffle"
                     />
-                    <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
+                    <div className="w-11 h-6 bg-slate-900 border border-slate-700/80 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500/40 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-slate-400 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white" />
                   </div>
                 </label>
 
-                {/* LocalStorage toggle */}
-                <label className="flex items-center justify-between cursor-pointer group border-t border-slate-850/40 pt-3">
-                  <span className="text-xs md:text-sm font-semibold text-slate-300">Preserve Progress</span>
-                  <div className="relative">
+                {/* Preserve Progress Toggle */}
+                <label className="flex items-center justify-between px-4.5 py-3.5 rounded-2xl bg-white/[0.02] hover:bg-white/[0.055] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-200 cursor-pointer group">
+                  <span className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors">
+                    Preserve Progress
+                  </span>
+                  <div className="relative shrink-0">
                     <input
                       type="checkbox"
                       checked={settings.enableLocalStorage}
                       onChange={(e) => setSettings({ ...settings, enableLocalStorage: e.target.checked })}
                       className="sr-only peer"
-                      id="toggle-localStorage"
                     />
-                    <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
+                    <div className="w-11 h-6 bg-slate-900 border border-slate-700/80 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500/40 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-slate-400 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white" />
                   </div>
                 </label>
 
-                {/* Instant Feedback toggle */}
-                <label className="flex items-center justify-between cursor-pointer group border-t border-slate-850/40 pt-3">
-                  <span className="text-xs md:text-sm font-semibold text-slate-300">Instant Feedback Mode</span>
-                  <div className="relative">
+                {/* Instant Feedback Toggle */}
+                <label className="flex items-center justify-between px-4.5 py-3.5 rounded-2xl bg-white/[0.02] hover:bg-white/[0.055] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-200 cursor-pointer group">
+                  <span className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors">
+                    Instant Feedback Mode
+                  </span>
+                  <div className="relative shrink-0">
                     <input
                       type="checkbox"
                       checked={settings.instantFeedback}
                       onChange={(e) => setSettings({ ...settings, instantFeedback: e.target.checked })}
                       className="sr-only peer"
-                      id="toggle-feedback"
                     />
-                    <div className="w-10 h-6 bg-slate-950 border border-slate-800 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white peer-checked:after:border-brand-500" />
+                    <div className="w-11 h-6 bg-slate-900 border border-slate-700/80 rounded-full peer peer-focus:ring-2 peer-focus:ring-brand-500/40 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-slate-400 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600 peer-checked:after:bg-white" />
                   </div>
                 </label>
-              </div>
 
-              {/* Timer options dropdown */}
-              <div className="flex items-center justify-between gap-4 border-t border-slate-850 pt-3.5">
-                <span className="text-xs md:text-sm font-semibold text-slate-300">Question Time Limit</span>
-                <select
-                  value={settings.timeLimitPerQuestion}
-                  onChange={(e) => setSettings({ ...settings, timeLimitPerQuestion: Number(e.target.value) })}
-                  className="bg-slate-950/80 border border-slate-850 rounded-xl px-3 py-1.5 text-xs md:text-sm text-slate-300 focus:outline-none focus:border-brand-500 cursor-pointer"
-                >
-                  <option value={0}>No limit</option>
-                  <option value={15}>15 seconds</option>
-                  <option value={30}>30 seconds</option>
-                  <option value={60}>60 seconds</option>
-                </select>
+                {/* Time Limit Row */}
+                <div className="flex items-center justify-between px-4.5 py-3 rounded-2xl bg-white/[0.02] hover:bg-white/[0.055] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-200">
+                  <span className="text-sm font-semibold text-slate-200">
+                    Question Time Limit
+                  </span>
+                  <div className="relative shrink-0">
+                    <select
+                      value={settings.timeLimitPerQuestion}
+                      onChange={(e) => setSettings({ ...settings, timeLimitPerQuestion: Number(e.target.value) })}
+                      className="bg-slate-900 border border-white/10 hover:border-white/20 rounded-xl px-3.5 py-1.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-brand-500 cursor-pointer transition-all"
+                    >
+                      <option value={0}>No limit</option>
+                      <option value={15}>15s per question</option>
+                      <option value={30}>30s per question</option>
+                      <option value={60}>60s per question</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Start Action Panel */}
-            <div className="pt-3">
+            {/* Start Button */}
+            <div className="pt-2">
               <button
                 onClick={startQuiz}
-                className="w-full px-10 py-3.5 rounded-xl font-bold uppercase tracking-wider premium-btn text-white text-xs md:text-sm cursor-pointer"
+                className="w-full py-4 px-8 rounded-2xl font-bold uppercase tracking-wider premium-btn text-white text-sm md:text-base flex items-center justify-center gap-3 cursor-pointer shadow-lg hover:shadow-brand-500/25 transition-all"
               >
-                Start Assessment
+                <span>Start Assessment</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </button>
             </div>
           </div>
@@ -391,7 +435,6 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
     );
   }
 
-  
   // ── RESULT SCREEN ────────────────────────────────────────────────────────
   if (state === "done") {
     return (
@@ -414,7 +457,6 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
   const isAnswered = answers[originalIndex] !== -1;
   const progress = ((current + 1) / activeQuestions.length) * 100;
 
-  // Format total elapsed time spent
   const formatTimeSpent = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -422,62 +464,70 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4 py-8 relative z-10">
+    <main className="flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 py-10 md:py-16 relative z-10 w-full max-w-2xl mx-auto">
       {/* Header bar */}
-      <div className="w-full max-w-2xl flex items-center justify-between mb-6 text-xs md:text-sm text-slate-450 font-bold uppercase tracking-wide">
-        <span className="flex items-center gap-1.5">
+      <div className="w-full flex items-center justify-between mb-8 py-3.5 px-5 rounded-2xl bg-white/[0.025] border border-white/[0.08] backdrop-blur-md">
+        <div className="flex items-center gap-2.5">
           <span className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse" />
-          {meta.course} assessment
-        </span>
-        <div className="flex items-center gap-4">
-          <span className="font-mono text-slate-500">
-            Elapsed: {formatTimeSpent(timeSpent)}
+          <span className="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-300">
+            {meta.course}
           </span>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5 text-xs md:text-sm font-mono text-slate-400">
+            <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{formatTimeSpent(timeSpent)}</span>
+          </div>
+
           <button
             onClick={() => setShowQuitConfirm(true)}
-            className="text-red-405 hover:text-red-300 font-bold uppercase tracking-wider text-[10px] border border-red-500/25 bg-red-500/5 hover:bg-red-500/10 px-2.5 py-1 rounded-lg transition-all duration-200 cursor-pointer"
+            className="text-red-400 hover:text-red-300 text-xs font-bold uppercase tracking-wider border border-red-500/20 bg-red-500/10 hover:bg-red-500/20 px-3 py-1.5 rounded-xl transition-all cursor-pointer"
           >
             Quit
           </button>
         </div>
       </div>
 
-      {/* Progress & Time tracking */}
-      <div className="mb-8 w-full max-w-2xl">
-        <div className="mb-2.5 flex justify-between items-end text-xs md:text-sm text-slate-400 font-semibold">
+      {/* Progress tracking */}
+      <div className="mb-8 w-full space-y-3">
+        <div className="flex justify-between items-center text-xs md:text-sm font-semibold text-slate-400">
           <span>
-            Question <span className="text-slate-100 font-bold">{current + 1}</span> of {activeQuestions.length}
+            Question <span className="text-white font-bold">{current + 1}</span> of {activeQuestions.length}
           </span>
-          <span className="font-mono text-slate-450">{Math.round(progress)}% Complete</span>
+          <span className="font-mono text-brand-300 font-bold">{Math.round(progress)}% Complete</span>
         </div>
         
         {/* Progress track */}
-        <div className="h-2 w-full overflow-hidden rounded-full bg-slate-900 border border-slate-850/80">
+        <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-900 border border-white/[0.06]">
           <div
             className="h-full rounded-full progress-bar-fill transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
 
-        {/* Time Limit Visual Counter */}
+        {/* Per-Question Timer */}
         {settings.timeLimitPerQuestion > 0 && (
-          <div className="mt-3.5 flex items-center gap-3 bg-slate-950/40 border border-slate-850/60 rounded-xl px-4 py-2">
-            <span className="text-xs text-slate-550 font-bold uppercase tracking-wide">Timer</span>
-            <div className="flex-1 h-1.5 rounded-full bg-slate-900 overflow-hidden relative">
+          <div className="mt-4 flex items-center gap-3 bg-white/[0.025] border border-white/[0.06] rounded-xl px-4 py-2.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Timer</span>
+            <div className="flex-1 h-2 rounded-full bg-slate-900 overflow-hidden relative">
               <div
                 className={`h-full rounded-full transition-all duration-1000 ease-linear ${
-                  timeLeft <= 5 ? "bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]" : "bg-brand-500"
+                  timeLeft <= 5 ? "bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.6)]" : "bg-brand-500"
                 }`}
                 style={{ width: `${(timeLeft / settings.timeLimitPerQuestion) * 100}%` }}
               />
             </div>
-            <span className={`font-mono text-xs font-bold leading-none ${timeLeft <= 5 ? "text-red-400 animate-pulse" : "text-slate-350"}`}>
+            <span className={`font-mono text-xs font-bold ${timeLeft <= 5 ? "text-red-400 animate-pulse" : "text-slate-300"}`}>
               {timeLeft}s
             </span>
           </div>
         )}
       </div>
 
+      {/* Question Card */}
       {q && (
         <QuestionCard
           question={q}
@@ -488,49 +538,56 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
       )}
 
       {/* Navigation panel */}
-      <div className="mt-6 flex w-full max-w-2xl justify-between gap-4">
+      <div className="mt-8 flex w-full justify-between items-center gap-4">
         <button
           onClick={prevQuestion}
           disabled={current === 0}
-          className="px-6 py-2.5 rounded-xl border border-slate-800 text-xs md:text-sm font-semibold text-slate-300 transition-all duration-200 bg-slate-900/20 hover:bg-slate-800 hover:text-slate-100 hover:border-slate-700 disabled:opacity-20 disabled:pointer-events-none cursor-pointer"
+          className="px-6 py-3.5 rounded-2xl border border-white/[0.08] text-xs md:text-sm font-bold uppercase tracking-wider text-slate-300 transition-all bg-white/[0.025] hover:bg-white/[0.06] hover:text-white hover:border-white/[0.15] disabled:opacity-30 disabled:pointer-events-none cursor-pointer flex items-center gap-2"
         >
-          ← Back
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back
         </button>
+
         <button
           onClick={nextQuestion}
           disabled={!isAnswered && settings.timeLimitPerQuestion === 0}
-          className={`px-7 py-2.5 rounded-xl text-xs md:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+          className={`px-8 py-3.5 rounded-2xl text-xs md:text-sm font-bold uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer ${
             isAnswered
-              ? "premium-btn text-white"
-              : "bg-slate-900 border border-slate-800 text-slate-500 cursor-not-allowed opacity-40"
+              ? "premium-btn text-white shadow-lg shadow-brand-500/20"
+              : "bg-white/[0.02] border border-white/[0.05] text-slate-600 cursor-not-allowed opacity-40"
           }`}
         >
-          {current === activeQuestions.length - 1 ? "Submit Report" : "Next →"}
+          <span>{current === activeQuestions.length - 1 ? "Submit Assessment" : "Next Question"}</span>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       </div>
 
       {/* Quit Confirmation Modal Overlay */}
       {showQuitConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-[#0b081e] p-6 md:p-8 shadow-2xl relative">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-50" />
-            <h3 className="text-lg font-bold text-white mb-2">Quit Assessment?</h3>
-            <p className="text-slate-400 text-sm mb-6 leading-relaxed">
-              Are you sure you want to quit the assessment? Your current session progress will be reset.
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+          <div className="w-full max-w-md rounded-3xl border border-white/[0.1] bg-[#0b081e] p-7 md:p-8 shadow-2xl relative space-y-5">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-rose-600" />
+            <h3 className="text-xl font-bold text-white">Quit Assessment?</h3>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Are you sure you want to exit? Your current session progress will be reset.
             </p>
-            <div className="flex justify-end gap-3">
+            <div className="flex justify-end gap-3 pt-2">
               <button
                 onClick={() => setShowQuitConfirm(false)}
-                className="px-4 py-2 text-xs md:text-sm font-semibold rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-slate-100 transition duration-200 cursor-pointer"
+                className="px-5 py-2.5 text-xs md:text-sm font-bold uppercase tracking-wider rounded-xl border border-white/[0.08] text-slate-300 hover:bg-white/[0.05] transition cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 onClick={() => {
                   setShowQuitConfirm(false);
-                  restartQuiz(); // Reset progress and return to onboarding screen
+                  restartQuiz();
                 }}
-                className="px-5 py-2.5 text-xs md:text-sm font-bold uppercase tracking-wider rounded-xl bg-red-650 hover:bg-red-550 text-white transition duration-200 cursor-pointer shadow-[0_4px_14px_rgba(239,68,68,0.35)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.45)]"
+                className="px-5 py-2.5 text-xs md:text-sm font-bold uppercase tracking-wider rounded-xl bg-red-600 hover:bg-red-500 text-white transition cursor-pointer shadow-lg shadow-red-500/30"
               >
                 Yes, Quit
               </button>

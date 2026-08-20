@@ -50,33 +50,40 @@ export default function ResultScreen({
   });
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12 relative z-10">
+    <main className="mx-auto max-w-3xl px-4 sm:px-6 py-12 md:py-20 relative z-10 space-y-10">
       {/* Background glowing decorations */}
-      <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-brand-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-brand-500/10 blur-3xl pointer-events-none" />
 
       {/* Main Score Panel */}
-      <div className="mb-10 rounded-3xl glass-card p-8 text-center relative overflow-hidden">
+      <div className="rounded-3xl glass-card p-6 sm:p-8 md:p-10 text-center relative overflow-hidden border border-white/[0.08] shadow-2xl space-y-8">
         {/* Top pass/fail border */}
         <div className={`absolute top-0 left-0 right-0 h-1.5 ${passed ? "bg-emerald-500" : "bg-red-500"}`} />
 
-        <h1 className="text-2xl font-bold tracking-tight text-slate-350 mb-6">Quiz Completion Report</h1>
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Performance Summary
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            Assessment Completed
+          </h1>
+        </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-around gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-around gap-8 pt-2">
           {/* Radial score gauge */}
-          <div className="relative flex items-center justify-center">
-            <svg className="w-36 h-36 transform -rotate-90">
+          <div className="relative flex items-center justify-center shrink-0">
+            <svg className="w-40 h-40 transform -rotate-90">
               {/* Background circle */}
               <circle
-                cx="72"
-                cy="72"
+                cx="80"
+                cy="80"
                 r={radius}
                 className="stroke-slate-800 fill-none"
                 strokeWidth={strokeWidth}
               />
               {/* Progress circle */}
               <circle
-                cx="72"
-                cy="72"
+                cx="80"
+                cy="80"
                 r={radius}
                 className={`fill-none transition-all duration-1000 ease-out ${
                   passed ? "stroke-emerald-500" : "stroke-red-500"
@@ -88,164 +95,176 @@ export default function ResultScreen({
               />
             </svg>
             <div className="absolute text-center">
-              <span className="text-4xl font-extrabold text-white">{percentage}%</span>
-              <p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mt-0.5">
-                Score
+              <span className="text-4xl sm:text-5xl font-black text-white">{percentage}%</span>
+              <p className="text-[11px] uppercase tracking-widest text-slate-500 font-bold mt-1">
+                Final Score
               </p>
             </div>
           </div>
 
           {/* Stats Dashboard */}
-          <div className="flex-1 grid grid-cols-2 gap-4 w-full text-left">
-            <div className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-4">
-              <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider block mb-1">
+          <div className="flex-1 grid grid-cols-2 gap-3.5 w-full text-left">
+            <div className="bg-white/[0.025] hover:bg-white/[0.05] border border-white/[0.06] hover:border-white/[0.12] rounded-2xl p-4 sm:p-4.5 transition-all duration-200">
+              <span className="text-[11px] text-slate-500 font-bold uppercase tracking-wider block mb-1">
                 Correct Answers
               </span>
-              <span className="text-2xl font-bold text-white">
+              <span className="text-2xl sm:text-3xl font-black text-white">
                 {score} <span className="text-sm font-normal text-slate-500">/ {total}</span>
               </span>
             </div>
-            <div className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-4">
-              <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider block mb-1">
+
+            <div className="bg-white/[0.025] hover:bg-white/[0.05] border border-white/[0.06] hover:border-white/[0.12] rounded-2xl p-4 sm:p-4.5 transition-all duration-200">
+              <span className="text-[11px] text-slate-500 font-bold uppercase tracking-wider block mb-1">
                 Passing Requirement
               </span>
-              <span className="text-2xl font-bold text-slate-300">
+              <span className="text-2xl sm:text-3xl font-black text-slate-300">
                 {passMark} <span className="text-sm font-normal text-slate-500">min</span>
               </span>
             </div>
-            <div className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-4">
-              <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider block mb-1">
-                Result Status
+
+            <div className="bg-white/[0.025] hover:bg-white/[0.05] border border-white/[0.06] hover:border-white/[0.12] rounded-2xl p-4 sm:p-4.5 transition-all duration-200">
+              <span className="text-[11px] text-slate-500 font-bold uppercase tracking-wider block mb-1">
+                Assessment Status
               </span>
               <span
-                className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider mt-1 ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mt-1 ${
                   passed
-                    ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                    : "bg-red-500/10 text-red-400 border border-red-500/20"
+                    ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
+                    : "bg-red-500/15 text-red-400 border border-red-500/30"
                 }`}
               >
                 {passed ? "Passed ✓" : "Failed ✗"}
               </span>
             </div>
+
             {timeSpent !== undefined && (
-              <div className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-4">
-                <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider block mb-1">
+              <div className="bg-white/[0.025] hover:bg-white/[0.05] border border-white/[0.06] hover:border-white/[0.12] rounded-2xl p-4 sm:p-4.5 transition-all duration-200">
+                <span className="text-[11px] text-slate-500 font-bold uppercase tracking-wider block mb-1">
                   Time Taken
                 </span>
-                <span className="text-2xl font-bold text-slate-300">{formatTime(timeSpent)}</span>
+                <span className="text-2xl sm:text-3xl font-black text-slate-300">{formatTime(timeSpent)}</span>
               </div>
             )}
           </div>
         </div>
 
-        <div className="mt-8 flex justify-center">
-          <button onClick={onRestart} className="px-8 py-3 rounded-xl font-semibold premium-btn text-white cursor-pointer">
+        <div className="pt-4 flex justify-center">
+          <button
+            onClick={onRestart}
+            className="px-10 py-4 rounded-2xl font-bold uppercase tracking-wider premium-btn text-white text-sm cursor-pointer shadow-lg hover:shadow-brand-500/25 transition-all"
+          >
             Retake Assessment
           </button>
         </div>
       </div>
 
-      {/* Filter Tabs for Answers */}
-      <div className="flex items-center justify-between border-b border-slate-800 mb-6 pb-2">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-500">
-          Answer Assessment Review
-        </h2>
-        <div className="flex gap-1.5 bg-slate-950/60 p-1 rounded-xl border border-slate-800/85">
-          {(["all", "correct", "incorrect"] as const).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setFilter(tab)}
-              className={`px-3 py-1.5 text-xs font-bold rounded-lg uppercase tracking-wide transition-all cursor-pointer ${
-                filter === tab
-                  ? "bg-brand-600 text-white shadow-sm"
-                  : "text-slate-500 hover:text-slate-300"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-      </div>
+      {/* Filter Tabs & Section Header */}
+      <div className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
+          <div>
+            <h2 className="text-base font-bold uppercase tracking-wider text-slate-200">
+              Answer Review Breakdown
+            </h2>
+            <p className="text-xs text-slate-500 mt-0.5">Inspect each question and verify explanations</p>
+          </div>
 
-      {/* Answer Lists */}
-      {filteredQuestions.length === 0 ? (
-        <div className="text-center py-12 rounded-2xl border border-slate-800 bg-slate-900/20 text-slate-500 text-sm">
-          No questions fit this filter.
-        </div>
-      ) : (
-        <ul className="space-y-4">
-          {filteredQuestions.map(({ q, idx }) => {
-            const userAns = answers[idx];
-            const correct = q.correctAnswer;
-            const isCorrect = userAns === correct;
-
-            return (
-              <li
-                key={q.id}
-                className={`rounded-2xl border p-5 md:p-6 transition-all duration-300 ${
-                  isCorrect
-                    ? "border-emerald-800/40 bg-emerald-950/10 shadow-sm shadow-emerald-950/5"
-                    : "border-red-800/40 bg-red-950/10 shadow-sm shadow-red-950/5"
+          <div className="flex gap-1.5 bg-white/[0.025] p-1 rounded-2xl border border-white/[0.06] self-start sm:self-auto">
+            {(["all", "correct", "incorrect"] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setFilter(tab)}
+                className={`px-3.5 py-1.5 text-xs font-bold rounded-xl uppercase tracking-wider transition-all cursor-pointer ${
+                  filter === tab
+                    ? "bg-brand-600 text-white shadow-sm"
+                    : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <p className="font-semibold text-slate-200 leading-snug md:text-base">
-                    <span className="text-slate-550 font-bold mr-1.5">{idx + 1}.</span>
-                    {q.question}
-                  </p>
-                  <span
-                    className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full text-xs font-black shadow-sm ${
-                      isCorrect ? "bg-emerald-500/20 text-emerald-400" : "bg-red-500/20 text-red-400"
-                    }`}
-                  >
-                    {isCorrect ? "✓" : "✗"}
-                  </span>
-                </div>
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 pl-4 border-l-2 border-slate-800/60">
-                  {q.options.map((opt, oi) => {
-                    const isUser = oi === userAns;
-                    const isRight = oi === correct;
+        {/* Answer Lists */}
+        {filteredQuestions.length === 0 ? (
+          <div className="text-center py-16 rounded-3xl border border-white/[0.06] bg-white/[0.015] text-slate-500 text-sm">
+            No questions fit this filter.
+          </div>
+        ) : (
+          <ul className="space-y-4">
+            {filteredQuestions.map(({ q, idx }) => {
+              const userAns = answers[idx];
+              const correct = q.correctAnswer;
+              const isCorrect = userAns === correct;
 
-                    let optionStyle = "text-slate-500 border-transparent bg-transparent";
-                    if (isRight) {
-                      optionStyle = "text-emerald-400 font-semibold border-emerald-800/30 bg-emerald-500/5";
-                    } else if (isUser && !isRight) {
-                      optionStyle = "text-red-400 line-through border-red-800/30 bg-red-500/5";
-                    }
+              return (
+                <li
+                  key={q.id}
+                  className={`rounded-3xl border p-6 md:p-7 transition-all duration-300 space-y-4 ${
+                    isCorrect
+                      ? "border-emerald-500/25 bg-emerald-500/[0.03] shadow-sm"
+                      : "border-red-500/25 bg-red-500/[0.03] shadow-sm"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <p className="font-bold text-slate-100 leading-snug text-base md:text-lg">
+                      <span className="text-brand-400 font-bold mr-2">{idx + 1}.</span>
+                      {q.question}
+                    </p>
+                    <span
+                      className={`shrink-0 flex h-7 w-7 items-center justify-center rounded-xl text-xs font-black shadow-sm ${
+                        isCorrect ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" : "bg-red-500/20 text-red-400 border border-red-500/30"
+                      }`}
+                    >
+                      {isCorrect ? "✓" : "✗"}
+                    </span>
+                  </div>
 
-                    return (
-                      <div
-                        key={oi}
-                        className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs md:text-sm ${optionStyle}`}
-                      >
-                        <span
-                          className={`flex h-5 w-5 shrink-0 items-center justify-center rounded text-[10px] font-bold border ${
-                            isRight
-                              ? "border-emerald-500/40 bg-emerald-500/20 text-emerald-350"
-                              : isUser && !isRight
-                              ? "border-red-500/40 bg-red-500/20 text-red-350"
-                              : "border-slate-800 text-slate-650"
-                          }`}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 pl-4 border-l-2 border-white/[0.06]">
+                    {q.options.map((opt, oi) => {
+                      const isUser = oi === userAns;
+                      const isRight = oi === correct;
+
+                      let optionStyle = "text-slate-500 border-transparent bg-transparent";
+                      if (isRight) {
+                        optionStyle = "text-emerald-300 font-semibold border-emerald-500/30 bg-emerald-500/10";
+                      } else if (isUser && !isRight) {
+                        optionStyle = "text-red-300 line-through border-red-500/30 bg-red-500/10";
+                      }
+
+                      return (
+                        <div
+                          key={oi}
+                          className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm ${optionStyle}`}
                         >
-                          {LABELS[oi]}
-                        </span>
-                        <span className="leading-tight">{opt}</span>
-                        {isRight && <span className="ml-auto text-emerald-450 font-black">✓</span>}
-                        {isUser && !isRight && <span className="ml-auto text-red-450 font-black">✗</span>}
-                      </div>
-                    );
-                  })}
-                </div>
+                          <span
+                            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[11px] font-bold border ${
+                              isRight
+                                ? "border-emerald-500/40 bg-emerald-500/20 text-emerald-300"
+                                : isUser && !isRight
+                                ? "border-red-500/40 bg-red-500/20 text-red-300"
+                                : "border-white/[0.08] text-slate-500 bg-white/[0.02]"
+                            }`}
+                          >
+                            {LABELS[oi]}
+                          </span>
+                          <span className="leading-snug">{opt}</span>
+                          {isRight && <span className="ml-auto text-emerald-400 font-black">✓</span>}
+                          {isUser && !isRight && <span className="ml-auto text-red-400 font-black">✗</span>}
+                        </div>
+                      );
+                    })}
+                  </div>
 
-                {userAns === -1 && (
-                  <p className="mt-3 text-xs text-slate-500 italic pl-4">Not answered</p>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      )}
+                  {userAns === -1 && (
+                    <p className="text-xs text-slate-500 italic pl-4">Question was skipped / unanswered</p>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
     </main>
   );
 }
