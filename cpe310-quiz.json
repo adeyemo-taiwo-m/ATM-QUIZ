@@ -1,4 +1,4 @@
-z{
+{
   "meta": {
     "title": "CPE310 – Agent-Based Systems Quiz",
     "course": "CPE310",
@@ -22,9 +22,7 @@ z{
       "question": "Under the three pillars, \"Autonomy\" requires that an agent can:",
       "options": [
         "Execute tasks synchronously within a single web request",
-        "Receive line-by-line user prompts to complete every s
-        
-        tep",
+        "Receive line-by-line user prompts to complete every step",
         "Operate independently and manage its own lifecycle without hardcoded control flows",
         "Bypass system security protocols safely"
       ],
@@ -154,12 +152,7 @@ z{
     {
       "id": 14,
       "question": "Complete the key distinction: Believable does NOT equal ________.",
-      "options": [
-        "Consistent",
-        "Autonomous",
-        "Realistic",
-        "Interactive"
-      ],
+      "options": ["Consistent", "Autonomous", "Realistic", "Interactive"],
       "correctAnswer": 2
     },
     {
@@ -187,12 +180,7 @@ z{
     {
       "id": 17,
       "question": "According to Nwana (1996), how many core characteristics form the backbone of agent design?",
-      "options": [
-        "Six",
-        "Three",
-        "Four",
-        "Nine"
-      ],
+      "options": ["Six", "Three", "Four", "Nine"],
       "correctAnswer": 0
     },
     {
@@ -264,23 +252,13 @@ z{
     {
       "id": 24,
       "question": "Which attribute refers to an agent making decisions and acting independently based on environmental perception?",
-      "options": [
-        "Autonomy",
-        "Proactivity",
-        "Reactivity",
-        "Delegation"
-      ],
+      "options": ["Autonomy", "Proactivity", "Reactivity", "Delegation"],
       "correctAnswer": 0
     },
     {
       "id": 25,
       "question": "According to the building blocks analogy, if the perception module represents \"senses,\" what does the action module represent?",
-      "options": [
-        "Context",
-        "Hands",
-        "Memory",
-        "Brain"
-      ],
+      "options": ["Context", "Hands", "Memory", "Brain"],
       "correctAnswer": 1
     },
     {
