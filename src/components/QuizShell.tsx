@@ -284,7 +284,7 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
                   Select Course
                 </label>
                 <span className="text-[11px] font-medium text-slate-500">
-                  {courses.length} course available
+                  {courses.length} {courses.length === 1 ? "course" : "courses"} available
                 </span>
               </div>
 
@@ -297,6 +297,7 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
                     const targetCourse = courses.find((c) => c.id === nextCourseId);
                     if (targetCourse) {
                       setAnswers(Array(targetCourse.data.questions.length).fill(-1));
+                      setCurrent(0);
                     }
                   }}
                   className="w-full bg-white/[0.025] hover:bg-white/[0.05] border border-white/[0.07] hover:border-white/[0.14] rounded-2xl px-4 py-3.5 text-sm md:text-base font-semibold text-slate-100 focus:outline-none focus:border-brand-500/80 focus:ring-2 focus:ring-brand-500/20 cursor-pointer appearance-none transition-all duration-200"

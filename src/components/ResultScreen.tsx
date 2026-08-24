@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Question } from "@/types/quiz";
+import DataTable from "./DataTable";
 
 interface Props {
   score: number;
@@ -13,7 +14,7 @@ interface Props {
   timeSpent?: number; // Optional time spent in seconds
 }
 
-const LABELS = ["A", "B", "C", "D"];
+const LABELS = ["A", "B", "C", "D", "E", "F"];
 
 export default function ResultScreen({
   score,
@@ -27,6 +28,14 @@ export default function ResultScreen({
   const [filter, setFilter] = useState<"all" | "correct" | "incorrect">("all");
   const passed = score >= passMark;
   const percentage = Math.round((score / total) * 100);
+
+  // Helper to extract option text
+  const getOptionText = (opt: any) => {
+    if (typeof opt === "object" && opt !== null && "text" in opt) {
+      return opt.text;
+    }
+    return String(opt);
+  };
 
   // SVG Circle calculations
   const radius = 60;
@@ -220,10 +229,28 @@ export default function ResultScreen({
                     </span>
                   </div>
 
+                  {/* Context in review */}
+                  {q.context && q.context.trim() !== "" && (
+                    <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs text-slate-300 leading-relaxed">
+                      <span className="text-brand-400 font-bold uppercase tracking-wider text-[10px] block mb-1">
+                        Scenario:
+                      </span>
+                      {q.context}
+                    </div>
+                  )}
+
+                  {/* Table in review */}
+                  {q.table && (
+                    <div className="w-full">
+                      <DataTable table={q.table} compact />
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 pl-4 border-l-2 border-white/[0.06]">
                     {q.options.map((opt, oi) => {
                       const isUser = oi === userAns;
                       const isRight = oi === correct;
+                      const optText = getOptionText(opt);
 
                       let optionStyle = "text-slate-500 border-transparent bg-transparent";
                       if (isRight) {
@@ -246,9 +273,9 @@ export default function ResultScreen({
                                 : "border-white/[0.08] text-slate-500 bg-white/[0.02]"
                             }`}
                           >
-                            {LABELS[oi]}
+                            {LABELS[oi] || String(oi + 1)}
                           </span>
-                          <span className="leading-snug">{opt}</span>
+                          <span className="leading-snug">{optText}</span>
                           {isRight && <span className="ml-auto text-emerald-400 font-black">✓</span>}
                           {isUser && !isRight && <span className="ml-auto text-red-400 font-black">✗</span>}
                         </div>
@@ -259,6 +286,10 @@ export default function ResultScreen({
                   {userAns === -1 && (
                     <p className="text-xs text-slate-500 italic pl-4">Question was skipped / unanswered</p>
                   )}
+
+                  {q.note && (
+                    <p className="text-[11px] font-mono text-slate-500 pl-4">ℹ️ {q.note}</p>
+                  )}
                 </li>
               );
             })}
@@ -268,3 +299,4 @@ export default function ResultScreen({
     </main>
   );
 }
+

@@ -1,8 +1,17 @@
+export interface TableData {
+  title?: string;
+  headers: string[];
+  rows: Record<string, any>[];
+}
+
 export interface Question {
   id: number;
   question: string;
   options: string[];
   correctAnswer: number;   // 0-based index
+  context?: string;
+  table?: TableData | null;
+  note?: string;
 }
 
 export interface QuizMeta {
@@ -25,3 +34,4 @@ export interface QuizSettings {
   enableLocalStorage: boolean;
   instantFeedback: boolean;
 }
+
