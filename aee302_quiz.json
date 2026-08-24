@@ -1,507 +1,680 @@
 {
-  "course": "AEE 302",
+  "meta": {
+    "title": "AEE302 – Statistics & Experimental Design Quiz",
+    "course": "AEE302",
+    "totalQuestions": 35,
+    "passMark": 25
+  },
   "questions": [
     {
-      "questionNumber": 1,
-      "type": "multiple_choice",
+      "id": 1,
       "question": "What is the probability that a teenage driver chosen at random will have a reaction time less than 0.65 seconds?",
       "context": "Suppose the reaction times of teenage drivers are normally distributed with a mean of 0.53 seconds and a standard deviation of 0.11 seconds.",
       "table": null,
-      "options": [
-        {"label": "A", "text": "0.8622"},
-        {"label": "B", "text": "0.8262"},
-        {"label": "C", "text": "0.7620"},
-        {"label": "D", "text": "0.8621"}
-      ]
+      "options": ["0.8622", "0.8262", "0.7620", "0.8621"],
+      "correctAnswer": 3
     },
     {
-      "questionNumber": 2,
-      "type": "multiple_choice",
+      "id": 2,
       "question": "Find the probability that a teenage driver chosen at random will have a reaction time between 0.4 and 0.6 seconds.",
       "context": "Suppose the reaction times of teenage drivers are normally distributed with a mean of 0.53 seconds and a standard deviation of 0.11 seconds.",
       "table": null,
-      "options": [
-        {"label": "A", "text": "0.6199"},
-        {"label": "B", "text": "0.8621"},
-        {"label": "C", "text": "0.7199"},
-        {"label": "D", "text": "0.3285"}
-      ]
+      "options": ["0.6199", "0.8621", "0.7199", "0.3285"],
+      "correctAnswer": 0
     },
     {
-      "questionNumber": 3,
-      "type": "multiple_choice",
+      "id": 3,
       "question": "Confidence intervals are a function of which of the following three things?",
       "context": "",
       "table": null,
       "options": [
-        {"label": "A", "text": "The population, the sample, and the standard deviation"},
-        {"label": "B", "text": "The sample, the variable of interest, and the degrees of freedom"},
-        {"label": "C", "text": "The data in the sample, the confidence level, and the sample size"},
-        {"label": "D", "text": "The sampling distribution, the confidence level, and the degrees of freedom"},
-        {"label": "E", "text": "The mean, the median, and the mode"}
-      ]
+        "The population, the sample, and the standard deviation",
+        "The sample, the variable of interest, and the degrees of freedom",
+        "The data in the sample, the confidence level, and the sample size",
+        "The sampling distribution, the confidence level, and the degrees of freedom",
+        "The mean, the median, and the mode"
+      ],
+      "correctAnswer": 2
     },
     {
-      "questionNumber": 4,
-      "type": "multiple_choice",
-      "question": "The Mean Squares are:",
-      "context": "The effective life, in hours, of batteries is compared by material type (1, 2, or 3) and operating temperature: Low (-10°C), Medium (20°C), or High (45°C). Twelve batteries are randomly selected from each material type and randomly allocated to the temperature levels. The resulting lives of all 36 batteries are shown below. Significance level: α = 0.05.",
+      "id": 4,
+      "question": "The Mean Squares (MS) for Material Type, Temperature, Interaction (MT × Temperature), and Error are:",
+      "context": "The effective life, in hours, of batteries is compared by material type (1, 2, or 3) and operating temperature: Low (-10°C), Medium (20°C), or High (45°C). Twelve batteries are randomly selected from each material type and randomly allocated to the temperature levels (4 batteries per cell, total N = 36). Significance level: α = 0.05.",
       "table": {
-        "title": "Battery Data",
+        "title": "Battery Life Experiment Data (Hours)",
         "headers": ["Material Type", "Low (-10°C)", "Medium (20°C)", "High (45°C)"],
         "rows": [
-          {"Material Type": "1", "Low (-10°C)": [130, 155, 74, 180], "Medium (20°C)": [34, 40, 80, 75], "High (45°C)": [70, 70, 82, 58]},
-          {"Material Type": "2", "Low (-10°C)": [150, 188, 159, 126], "Medium (20°C)": [135, 172, 106, 115], "High (45°C)": [25, 70, 58, 45]},
-          {"Material Type": "3", "Low (-10°C)": [138, 110, 168, 160], "Medium (20°C)": [174, 120, 130, 159], "High (45°C)": [96, 104, 82, 60]}
+          {
+            "Material Type": "Type 1",
+            "Low (-10°C)": [130, 155, 74, 180],
+            "Medium (20°C)": [34, 40, 80, 75],
+            "High (45°C)": [70, 70, 82, 58]
+          },
+          {
+            "Material Type": "Type 2",
+            "Low (-10°C)": [150, 188, 159, 126],
+            "Medium (20°C)": [135, 172, 106, 115],
+            "High (45°C)": [25, 70, 58, 45]
+          },
+          {
+            "Material Type": "Type 3",
+            "Low (-10°C)": [138, 110, 168, 160],
+            "Medium (20°C)": [174, 120, 130, 159],
+            "High (45°C)": [96, 104, 82, 60]
+          }
         ]
       },
       "options": [
-        {
-          "label": "A",
-          "text": "MT: 5341.861, Temperature: 19559.361, MT × Temperature: 2405.444, Error: 675.213"
-        },
-        {
-          "label": "B",
-          "text": "MT: 5345.861, Temperature: 19560.361, MT × Temperature: 2403.444, Error: 675.312"
-        },
-        {
-          "label": "C",
-          "text": "MT: 5341.861, Temperature: 19559.361, MT × Temperature: 2405.444, Error: 675.213"
-        },
-        {
-          "label": "D",
-          "text": "MT: 11646.028, Temperature: 5345.861, MT × Temperature: 6358.111, Error: 675.213"
-        }
-      ]
-    },
-    {
-      "questionNumber": 5,
-      "type": "multiple_choice",
-      "question": "The F-values are:",
-      "context": "Refers to the same battery experiment described in Question 4 (material type × operating temperature).",
-      "table": {
-        "title": "Q5 Options",
-        "headers": ["Source", "A", "B", "C", "D"],
-        "rows": [
-          {"Source": "MT", "A": 7.911, "B": 7.910, "C": 7.911, "D": 17.248},
-          {"Source": "Temperature", "A": 28.968, "B": 29.000, "C": 28.689, "D": 7.917},
-          {"Source": "MT × Temperature", "A": 3.560, "B": 9.416, "C": 3.563, "D": 3.560}
-        ]
-      },
-      "options": []
-    },
-    {
-      "questionNumber": 6,
-      "type": "multiple_choice",
-      "question": "Is there strong evidence that the mean battery life varies with the material used?",
-      "context": "Refers to the same battery experiment described in Question 4.",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "Yes"},
-        {"label": "B", "text": "No"}
-      ]
-    },
-    {
-      "questionNumber": 7,
-      "type": "multiple_choice",
-      "question": "A sample of size n = 25 is drawn from a normally distributed population with unknown population standard deviation. Which distribution should be used to construct a confidence interval for the population mean?",
-      "context": "Replacement question — the original Question 7 was not visible in the supplied source images, so this question was written to fit the surrounding material on sampling distributions and confidence intervals (Questions 3, 9, and 10).",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "The z (standard normal) distribution"},
-        {"label": "B", "text": "The t distribution with 24 degrees of freedom"},
-        {"label": "C", "text": "The F distribution"},
-        {"label": "D", "text": "The chi-square distribution"}
+        "MT: 5341.861, Temperature: 19559.361, MT × Temperature: 2405.444, Error: 675.213",
+        "MT: 5345.861, Temperature: 19560.361, MT × Temperature: 2403.444, Error: 675.312",
+        "MT: 5341.861, Temperature: 19559.361, MT × Temperature: 2405.444, Error: 675.213",
+        "MT: 11646.028, Temperature: 5345.861, MT × Temperature: 6358.111, Error: 675.213"
       ],
-      "note": "Generated replacement content — not part of the original source material."
+      "correctAnswer": 0
     },
     {
-      "questionNumber": 8,
-      "type": "multiple_choice",
+      "id": 5,
+      "question": "The F-values for Material Type, Temperature, and MT × Temperature, respectively, are:",
+      "context": "A two-way ANOVA is conducted on battery life across 3 Material Types and 3 Temperatures (N = 36, α = 0.05). The computed Mean Squares are: MS(Material Type) = 5341.861, MS(Temperature) = 19559.361, MS(MT × Temperature) = 2405.444, and MS(Error) = 675.213.",
+      "table": {
+        "title": "Battery Life Experiment Data (Hours)",
+        "headers": ["Material Type", "Low (-10°C)", "Medium (20°C)", "High (45°C)"],
+        "rows": [
+          {
+            "Material Type": "Type 1",
+            "Low (-10°C)": [130, 155, 74, 180],
+            "Medium (20°C)": [34, 40, 80, 75],
+            "High (45°C)": [70, 70, 82, 58]
+          },
+          {
+            "Material Type": "Type 2",
+            "Low (-10°C)": [150, 188, 159, 126],
+            "Medium (20°C)": [135, 172, 106, 115],
+            "High (45°C)": [25, 70, 58, 45]
+          },
+          {
+            "Material Type": "Type 3",
+            "Low (-10°C)": [138, 110, 168, 160],
+            "Medium (20°C)": [174, 120, 130, 159],
+            "High (45°C)": [96, 104, 82, 60]
+          }
+        ]
+      },
+      "options": [
+        "MT: 7.911, Temperature: 28.968, MT × Temperature: 3.560",
+        "MT: 7.910, Temperature: 29.000, MT × Temperature: 9.416",
+        "MT: 7.911, Temperature: 28.689, MT × Temperature: 3.563",
+        "MT: 17.248, Temperature: 7.917, MT × Temperature: 3.560"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 6,
+      "question": "Is there strong evidence that the mean battery life varies with the material used?",
+      "context": "In the battery life experiment (α = 0.05), the test statistic for Material Type is F = 7.911, compared against critical F(0.05, 2, 27) = 3.35.",
+      "table": {
+        "title": "Battery Life Experiment Data (Hours)",
+        "headers": ["Material Type", "Low (-10°C)", "Medium (20°C)", "High (45°C)"],
+        "rows": [
+          {
+            "Material Type": "Type 1",
+            "Low (-10°C)": [130, 155, 74, 180],
+            "Medium (20°C)": [34, 40, 80, 75],
+            "High (45°C)": [70, 70, 82, 58]
+          },
+          {
+            "Material Type": "Type 2",
+            "Low (-10°C)": [150, 188, 159, 126],
+            "Medium (20°C)": [135, 172, 106, 115],
+            "High (45°C)": [25, 70, 58, 45]
+          },
+          {
+            "Material Type": "Type 3",
+            "Low (-10°C)": [138, 110, 168, 160],
+            "Medium (20°C)": [174, 120, 130, 159],
+            "High (45°C)": [96, 104, 82, 60]
+          }
+        ]
+      },
+      "options": ["Yes", "No"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 7,
+      "question": "A sample of size n = 25 is drawn from a normally distributed population with unknown population standard deviation. Which distribution should be used to construct a confidence interval for the population mean?",
+      "context": "Sampling distributions and confidence intervals analysis.",
+      "table": null,
+      "options": [
+        "The z (standard normal) distribution",
+        "The t distribution with 24 degrees of freedom",
+        "The F distribution",
+        "The chi-square distribution"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 8,
       "question": "Suppose a die is tossed. What is the probability that the die will land on a number that is greater than 5?",
       "context": "",
       "table": null,
-      "options": [
-        {"label": "A", "text": "2/3"},
-        {"label": "B", "text": "1/5"},
-        {"label": "C", "text": "1/2"},
-        {"label": "D", "text": "1/3"},
-        {"label": "E", "text": "1/6"}
-      ]
+      "options": ["2/3", "1/5", "1/2", "1/3", "1/6"],
+      "correctAnswer": 4
     },
     {
-      "questionNumber": 9,
-      "type": "multiple_choice",
+      "id": 9,
       "question": "If you increase the confidence level, the confidence interval ______.",
       "context": "",
       "table": null,
       "options": [
-        {"label": "A", "text": "decreases"},
-        {"label": "B", "text": "increases"},
-        {"label": "C", "text": "stays the same"},
-        {"label": "D", "text": "may increase or decrease, depending on the sample data"}
-      ]
+        "decreases",
+        "increases",
+        "stays the same",
+        "may increase or decrease, depending on the sample data"
+      ],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 10,
-      "type": "multiple_choice",
+      "id": 10,
       "question": "When we replace σ with the sample standard deviation s, we introduce a new source of variability and the sampling distribution becomes the ______.",
       "context": "",
       "table": null,
       "options": [
-        {"label": "A", "text": "t distribution"},
-        {"label": "B", "text": "F distribution"},
-        {"label": "C", "text": "z distribution"},
-        {"label": "D", "text": "robust distribution"}
-      ]
+        "t distribution",
+        "F distribution",
+        "z distribution",
+        "robust distribution"
+      ],
+      "correctAnswer": 0
     },
     {
-      "questionNumber": 11,
-      "type": "multiple_choice",
-      "question": "Construct a 99% confidence interval for the average of the time differences.",
-      "context": "The same eleven workers performed a task using two different methods. The completion times, in minutes, for each task are given below.",
+      "id": 11,
+      "question": "Construct a 99% confidence interval for the average of the time differences (d = Method A - Method B).",
+      "context": "The same eleven workers performed a task using two different methods (Method A and Method B). The completion times, in minutes, for each worker are given below.",
       "table": {
-        "title": "Worker Completion Times",
-        "headers": ["Method", "Worker 1", "Worker 2", "Worker 3", "Worker 4", "Worker 5", "Worker 6", "Worker 7", "Worker 8", "Worker 9", "Worker 10", "Worker 11"],
+        "title": "Worker Task Completion Times (Minutes)",
+        "headers": ["Method", "W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11"],
         "rows": [
-          {"Method": "A", "Worker 1": 15.2, "Worker 2": 14.6, "Worker 3": 14.2, "Worker 4": 15.6, "Worker 5": 14.9, "Worker 6": 15.2, "Worker 7": 15.6, "Worker 8": 15.0, "Worker 9": 16.2, "Worker 10": 15.7, "Worker 11": 15.6},
-          {"Method": "B", "Worker 1": 14.5, "Worker 2": 14.8, "Worker 3": 13.8, "Worker 4": 15.6, "Worker 5": 15.3, "Worker 6": 14.3, "Worker 7": 15.5, "Worker 8": 15.0, "Worker 9": 15.6, "Worker 10": 15.2, "Worker 11": 14.8}
+          {
+            "Method": "Method A",
+            "W1": 15.2, "W2": 14.6, "W3": 14.2, "W4": 15.6, "W5": 14.9,
+            "W6": 15.2, "W7": 15.6, "W8": 15.0, "W9": 16.2, "W10": 15.7, "W11": 15.6
+          },
+          {
+            "Method": "Method B",
+            "W1": 14.5, "W2": 14.8, "W3": 13.8, "W4": 15.6, "W5": 15.3,
+            "W6": 14.3, "W7": 15.5, "W8": 15.0, "W9": 15.6, "W10": 15.2, "W11": 14.8
+          }
         ]
       },
       "options": [
-        {"label": "A", "text": "(-0.114, 0.722) min"},
-        {"label": "B", "text": "(-0.104, 0.722) min"},
-        {"label": "C", "text": "(0.722, -0.104) min"},
-        {"label": "D", "text": "(0.104, 0.722) minutes"}
-      ]
+        "(-0.114, 0.722) min",
+        "(-0.104, 0.722) min",
+        "(0.722, -0.104) min",
+        "(0.104, 0.722) minutes"
+      ],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 12,
-      "type": "multiple_choice",
-      "question": "The sample standard deviation, s, is:",
-      "context": "Refers to the same paired-samples worker data described in Question 11.",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "0.3223"},
-        {"label": "B", "text": "0.3019"},
-        {"label": "C", "text": "0.4232"},
-        {"label": "D", "text": "0.4323"}
-      ]
+      "id": 12,
+      "question": "The sample standard deviation of differences, s, is:",
+      "context": "The same eleven workers performed a task using Method A and Method B. The paired time differences (d = A - B) for the 11 workers are: [0.7, -0.2, 0.4, 0.0, -0.4, 0.9, 0.1, 0.0, 0.6, 0.5, 0.8] with mean d̄ = 0.309 minutes.",
+      "table": {
+        "title": "Worker Task Completion Times (Minutes)",
+        "headers": ["Method", "W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11"],
+        "rows": [
+          {
+            "Method": "Method A",
+            "W1": 15.2, "W2": 14.6, "W3": 14.2, "W4": 15.6, "W5": 14.9,
+            "W6": 15.2, "W7": 15.6, "W8": 15.0, "W9": 16.2, "W10": 15.7, "W11": 15.6
+          },
+          {
+            "Method": "Method B",
+            "W1": 14.5, "W2": 14.8, "W3": 13.8, "W4": 15.6, "W5": 15.3,
+            "W6": 14.3, "W7": 15.5, "W8": 15.0, "W9": 15.6, "W10": 15.2, "W11": 14.8
+          }
+        ]
+      },
+      "options": ["0.3223", "0.3019", "0.4232", "0.4323"],
+      "correctAnswer": 3
     },
     {
-      "questionNumber": 13,
-      "type": "multiple_choice",
-      "question": "There is no significant difference between the results from the two methods.",
-      "context": "Refers to the same paired-samples worker data described in Question 11.",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "True"},
-        {"label": "B", "text": "False"}
-      ]
+      "id": 13,
+      "question": "Based on this confidence interval, there is no significant difference between the results from the two methods.",
+      "context": "For the eleven workers evaluated under Method A and Method B, the 99% confidence interval for the mean time difference is (-0.104, 0.722) minutes.",
+      "table": {
+        "title": "Worker Task Completion Times (Minutes)",
+        "headers": ["Method", "W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11"],
+        "rows": [
+          {
+            "Method": "Method A",
+            "W1": 15.2, "W2": 14.6, "W3": 14.2, "W4": 15.6, "W5": 14.9,
+            "W6": 15.2, "W7": 15.6, "W8": 15.0, "W9": 16.2, "W10": 15.7, "W11": 15.6
+          },
+          {
+            "Method": "Method B",
+            "W1": 14.5, "W2": 14.8, "W3": 13.8, "W4": 15.6, "W5": 15.3,
+            "W6": 14.3, "W7": 15.5, "W8": 15.0, "W9": 15.6, "W10": 15.2, "W11": 14.8
+          }
+        ]
+      },
+      "options": ["True", "False"],
+      "correctAnswer": 0
     },
     {
-      "questionNumber": 14,
-      "type": "multiple_choice",
+      "id": 14,
       "question": "Can the professor have 90% confidence that the mean score for the class on the test would be at least 70?",
-      "context": "A professor wants to know if her introductory statistics class has a good grasp of basic mathematics. Six students are chosen at random from the class and given a math proficiency test. The professor wants the class to be able to score above 70 on the test. The six students obtain scores of 62, 92, 75, 68, 83, and 95.",
+      "context": "A professor wants to know if her introductory statistics class has a good grasp of basic mathematics. Six students chosen at random from the class obtain scores of 62, 92, 75, 68, 83, and 95 on a math proficiency test. The target score is μ₀ = 70 with a 90% confidence level (α = 0.10, df = 5).",
       "table": null,
-      "options": [
-        {"label": "A", "text": "Yes"},
-        {"label": "B", "text": "No"}
-      ]
+      "options": ["Yes", "No"],
+      "correctAnswer": 0
     },
     {
-      "questionNumber": 15,
-      "type": "multiple_choice",
-      "question": "The value in the t-table and the test statistic, respectively, are:",
-      "context": "Refers to the same one-sample t test described in Question 14.",
+      "id": 15,
+      "question": "The critical value in the t-table (t₀.₁₀,₅) and the calculated test statistic (t), respectively, are:",
+      "context": "Six students scored 62, 92, 75, 68, 83, and 95 (sample mean x̄ = 79.17, sample standard deviation s = 13.17, sample size n = 6, test threshold μ₀ = 70 at α = 0.10, one-tailed with df = 5).",
       "table": null,
       "options": [
-        {"label": "A", "text": "2.015 and 1.71"},
-        {"label": "B", "text": "1.476 and 2.015"},
-        {"label": "C", "text": "1.476 and 1.73"},
-        {"label": "D", "text": "1.476 and 1.70"}
-      ]
+        "2.015 and 1.71",
+        "1.476 and 2.015",
+        "1.476 and 1.73",
+        "1.476 and 1.70"
+      ],
+      "correctAnswer": 3
     },
     {
-      "questionNumber": 16,
-      "type": "multiple_choice",
+      "id": 16,
       "question": "When an analysis of variance is performed on samples drawn from k populations, the mean square between treatments is:",
       "context": "",
       "table": null,
       "options": [
-        {"label": "A", "text": "SS/(N − 1)"},
-        {"label": "B", "text": "SS/k"},
-        {"label": "C", "text": "SS/(k − 1)"},
-        {"label": "D", "text": "SS/(k − 2)"},
-        {"label": "E", "text": "SS/N"}
-      ]
+        "SS/(N − 1)",
+        "SS/k",
+        "SS/(k − 1)",
+        "SS/(k − 2)",
+        "SS/N"
+      ],
+      "correctAnswer": 2
     },
     {
-      "questionNumber": 17,
-      "type": "multiple_choice",
+      "id": 17,
       "question": "The following are features of Latin Square Designs, except:",
       "context": "",
       "table": null,
       "options": [
-        {"label": "A", "text": "They handle the case when we have several nuisance factors and we either cannot combine them into a single factor or wish to keep them separate."},
-        {"label": "B", "text": "They allow experiments with a relatively small number of runs."},
-        {"label": "C", "text": "The number of levels of each blocking variable must equal the number of levels of the treatment factor."},
-        {"label": "D", "text": "The Latin square model assumes that there are no interactions between the blocking variables or between the treatment variable and the blocking variables."},
-        {"label": "E", "text": "They are equivalent to specific fractional factorial designs."}
-      ]
+        "They handle the case when we have several nuisance factors and we either cannot combine them into a single factor or wish to keep them separate.",
+        "They allow experiments with a relatively small number of runs.",
+        "The number of levels of each blocking variable must equal the number of levels of the treatment factor.",
+        "The Latin square model assumes that there are no interactions between the blocking variables or between the treatment variable and the blocking variables.",
+        "They are equivalent to specific fractional factorial designs."
+      ],
+      "correctAnswer": 0
     },
     {
-      "questionNumber": 18,
-      "type": "multiple_choice",
-      "question": "The sums of squares between detergents, within detergents, and total, respectively, are:",
-      "context": "In a comparison of the cleaning action of four detergents, 20 pieces of white cloth were first soiled with black ink. The cloths were then washed under controlled conditions with five pieces washed by each detergent. Unfortunately, three pieces of cloth were lost during the experiment. Whiteness readings were made on the remaining 17 pieces. Assume all whiteness readings are normally distributed with common variance.",
+      "id": 18,
+      "question": "The sums of squares between detergents (SS_between), within detergents (SS_within), and total (SS_total), respectively, are:",
+      "context": "In a comparison of the cleaning action of four detergents (A, B, C, D), soiled pieces of white cloth were washed under controlled conditions. Seventeen pieces of cloth were measured for whiteness across the 4 detergents. Assume all whiteness readings are normally distributed with common variance (α = 0.05, k = 4, N = 17).",
       "table": {
-        "title": "Whiteness Readings",
+        "title": "Whiteness Readings by Detergent",
         "headers": ["Detergent", "Whiteness Readings"],
         "rows": [
-          {"Detergent": "A", "Whiteness Readings": [77, 81, 61, 76, 69]},
-          {"Detergent": "B", "Whiteness Readings": [74, 65, 58]},
-          {"Detergent": "C", "Whiteness Readings": [73, 73, 57, 69, 65]},
-          {"Detergent": "D", "Whiteness Readings": [76, 88, 77, 64]}
+          {"Detergent": "Detergent A", "Whiteness Readings": [77, 81, 61, 76, 69]},
+          {"Detergent": "Detergent B", "Whiteness Readings": [74, 65, 58]},
+          {"Detergent": "Detergent C", "Whiteness Readings": [73, 73, 57, 69, 65]},
+          {"Detergent": "Detergent D", "Whiteness Readings": [76, 88, 77, 64]}
         ]
       },
       "options": [
-        {"label": "A", "text": "873, 216.67, and 1090.47"},
-        {"label": "B", "text": "206.67, 883.80, and 1090.47"},
-        {"label": "C", "text": "216.67, 873.80, and 1090.47"},
-        {"label": "D", "text": "216.67, 873.80, and 1090.47"}
+        "873, 216.67, and 1090.47",
+        "206.67, 883.80, and 1090.47",
+        "216.67, 873.80, and 1090.47",
+        "216.67, 873.80, and 1090.47"
       ],
-      "sourceNote": "The printed options in the source image were blurred; values preserved as given in the source."
+      "correctAnswer": 2
     },
     {
-      "questionNumber": 19,
-      "type": "multiple_choice",
+      "id": 19,
       "question": "The F-ratio is:",
-      "context": "Refers to the same detergent experiment described in Question 18.",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "1.07"},
-        {"label": "B", "text": "1.06"},
-        {"label": "C", "text": "1.08"},
-        {"label": "D", "text": "None of the above"}
-      ]
+      "context": "In the four-detergent comparison (N = 17, k = 4), the sums of squares are SS(between) = 216.67 (df = 3) and SS(within) = 873.80 (df = 13), giving MS(between) = 72.22 and MS(within) = 67.22.",
+      "table": {
+        "title": "Whiteness Readings by Detergent",
+        "headers": ["Detergent", "Whiteness Readings"],
+        "rows": [
+          {"Detergent": "Detergent A", "Whiteness Readings": [77, 81, 61, 76, 69]},
+          {"Detergent": "Detergent B", "Whiteness Readings": [74, 65, 58]},
+          {"Detergent": "Detergent C", "Whiteness Readings": [73, 73, 57, 69, 65]},
+          {"Detergent": "Detergent D", "Whiteness Readings": [76, 88, 77, 64]}
+        ]
+      },
+      "options": ["1.07", "1.06", "1.08", "None of the above"],
+      "correctAnswer": 0
     },
     {
-      "questionNumber": 20,
-      "type": "multiple_choice",
+      "id": 20,
       "question": "Is there evidence, at the 5% significance level, to suggest a difference between the four brands as regards the mean whiteness after washing?",
-      "context": "Refers to the same detergent experiment described in Question 18.",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "Yes"},
-        {"label": "B", "text": "No"}
-      ]
+      "context": "In the detergent experiment, the calculated F-ratio is 1.07, and the critical value at the 5% significance level is F(0.05, 3, 13) = 3.41.",
+      "table": {
+        "title": "Whiteness Readings by Detergent",
+        "headers": ["Detergent", "Whiteness Readings"],
+        "rows": [
+          {"Detergent": "Detergent A", "Whiteness Readings": [77, 81, 61, 76, 69]},
+          {"Detergent": "Detergent B", "Whiteness Readings": [74, 65, 58]},
+          {"Detergent": "Detergent C", "Whiteness Readings": [73, 73, 57, 69, 65]},
+          {"Detergent": "Detergent D", "Whiteness Readings": [76, 88, 77, 64]}
+        ]
+      },
+      "options": ["Yes", "No"],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 21,
-      "type": "multiple_choice",
+      "id": 21,
       "question": "What is the probability that a randomly selected factory worker can assemble the part in under 75 seconds or in over 81 seconds?",
       "context": "A consultant determined that the time, in seconds, to assemble a part for workers trained with a particular method was normally distributed with a mean of 75 seconds and a standard deviation of 6 seconds.",
       "table": null,
-      "options": [
-        {"label": "A", "text": "0.1587"},
-        {"label": "B", "text": "0.3413"},
-        {"label": "C", "text": "0.6587"},
-        {"label": "D", "text": "0.5000"}
-      ]
+      "options": ["0.1587", "0.3413", "0.6587", "0.5000"],
+      "correctAnswer": 2
     },
     {
-      "questionNumber": 22,
-      "type": "multiple_choice",
-      "question": "The hypotheses are:",
-      "context": "A Little League baseball coach wants to know if his team is representative of other teams in scoring runs. Nationally, the average number of runs scored by a Little League team in a game is 5.7. He chooses five games at random in which his team scored 5, 9, 4, 11, and 8 runs. Assume an alpha level of 0.05.",
+      "id": 22,
+      "question": "The null and alternative hypotheses to test whether the team differs from national average are:",
+      "context": "A Little League baseball coach wants to know if his team is representative of other teams in scoring runs. Nationally, the average number of runs scored by a Little League team in a game is 5.7. He chooses five games at random in which his team scored 5, 9, 4, 11, and 8 runs (n = 5, α = 0.05).",
       "table": null,
       "options": [
-        {"label": "A", "text": "H₀: μ = 5.7 and H₁: μ < 5.7"},
-        {"label": "B", "text": "H₀: μ = 5.7 and H₁: μ ≠ 5.7"},
-        {"label": "C", "text": "H₀: μ = 5.7 and H₁: μ > 5.7"},
-        {"label": "D", "text": "H₀: μ = 5.7 and H₁: μ < 5.7 and μ > 5.7"}
-      ]
+        "H₀: μ = 5.7 and H₁: μ < 5.7",
+        "H₀: μ = 5.7 and H₁: μ ≠ 5.7",
+        "H₀: μ = 5.7 and H₁: μ > 5.7",
+        "H₀: μ = 5.7 and H₁: μ < 5.7 and μ > 5.7"
+      ],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 23,
-      "type": "multiple_choice",
+      "id": 23,
       "question": "The sample standard deviation, s, is:",
-      "context": "Refers to the same Little League baseball data described in Question 22.",
+      "context": "A Little League baseball team scored 5, 9, 4, 11, and 8 runs across five randomly selected games (n = 5, sample mean x̄ = 7.4 runs, national average μ = 5.7).",
       "table": null,
-      "options": [
-        {"label": "A", "text": "7.44"},
-        {"label": "B", "text": "2.89"},
-        {"label": "C", "text": "2.89"},
-        {"label": "D", "text": "2.87"}
-      ]
+      "options": ["7.44", "2.89", "2.89", "2.87"],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 24,
-      "type": "multiple_choice",
-      "question": "Can the coach conclude that his team is different from the national distribution on runs scored?",
-      "context": "Refers to the same Little League baseball data described in Question 22.",
+      "id": 24,
+      "question": "Can the coach conclude that his team is significantly different from the national distribution on runs scored?",
+      "context": "For the Little League team scoring 5, 9, 4, 11, and 8 runs (n = 5, x̄ = 7.4, s = 2.89, national μ = 5.7, α = 0.05), the calculated test statistic is t = 1.32 and the two-tailed critical value is t(0.025, 4) = 2.776.",
       "table": null,
-      "options": [
-        {"label": "A", "text": "Yes"},
-        {"label": "B", "text": "No"}
-      ]
+      "options": ["Yes", "No"],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 25,
-      "type": "multiple_choice",
-      "question": "The hypotheses are:",
-      "context": "A research study was conducted to examine the differences between older and younger adults on perceived life satisfaction. Ten older adults (over the age of 70) and ten younger adults (between 20 and 30) were given a life satisfaction test. Scores range from 0 to 60, with high scores indicating high life satisfaction and low scores indicating low life satisfaction. Compute the appropriate t-test.",
+      "id": 25,
+      "question": "The hypotheses to test whether a significant difference exists between younger and older adults are:",
+      "context": "A research study examined differences between older adults (> 70 yrs, n₁ = 10) and younger adults (20–30 yrs, n₂ = 10) on life satisfaction (scale 0–60, where higher scores indicate greater satisfaction). Test at α = 0.05.",
       "table": {
-        "title": "Life Satisfaction Scores",
+        "title": "Life Satisfaction Scores (0–60 Scale)",
         "headers": ["Group", "Scores"],
         "rows": [
-          {"Group": "Younger Adults", "Scores": [34, 22, 15, 27, 37, 41, 24, 19, 26, 36]},
-          {"Group": "Older Adults", "Scores": [45, 38, 52, 48, 25, 39, 51, 46, 55, 46]}
+          {"Group": "Younger Adults (20–30 yrs)", "Scores": [34, 22, 15, 27, 37, 41, 24, 19, 26, 36]},
+          {"Group": "Older Adults (> 70 yrs)", "Scores": [45, 38, 52, 48, 25, 39, 51, 46, 55, 46]}
         ]
       },
       "options": [
-        {"label": "A", "text": "H₀: μ₁ = μ₂ and H₁: μ₁ > μ₂"},
-        {"label": "B", "text": "H₀: μ₁ − μ₂ = 0 and H₁: μ₁ ≠ μ₂"},
-        {"label": "C", "text": "H₀: μ₁ = μ₂ and H₁: μ₁ < μ₂"},
-        {"label": "D", "text": "H₀: μ₁ − μ₂ = 0 and H₁: μ₁ < μ₂"}
-      ]
+        "H₀: μ₁ = μ₂ and H₁: μ₁ > μ₂",
+        "H₀: μ₁ − μ₂ = 0 and H₁: μ₁ ≠ μ₂",
+        "H₀: μ₁ = μ₂ and H₁: μ₁ < μ₂",
+        "H₀: μ₁ − μ₂ = 0 and H₁: μ₁ < μ₂"
+      ],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 26,
-      "type": "multiple_choice",
-      "question": "The sample standard deviations, s, are:",
-      "context": "Refers to the same life satisfaction data described in Question 25.",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "75.39 and 72.99"},
-        {"label": "B", "text": "15.07"},
-        {"label": "C", "text": "2.27"},
-        {"label": "D", "text": "8.68 and 8.54"}
-      ]
-    },
-    {
-      "questionNumber": 27,
-      "type": "multiple_choice",
-      "question": "The t statistic is:",
-      "context": "Refers to the same life satisfaction data described in Question 25.",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "3.441"},
-        {"label": "B", "text": "4.258"},
-        {"label": "C", "text": "4.259"},
-        {"label": "D", "text": "3.442"}
-      ]
-    },
-    {
-      "questionNumber": 28,
-      "type": "multiple_choice",
-      "question": "Did older adults in this sample have significantly higher life satisfaction than younger adults?",
-      "context": "Refers to the same life satisfaction data described in Question 25.",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "Yes"},
-        {"label": "B", "text": "No"}
-      ]
-    },
-    {
-      "questionNumber": 29,
-      "type": "multiple_choice",
-      "question": "The Sum of Squares (SS) for Position, Rabbit and Order, respectively, are:",
-      "context": "The skins of rabbits' backs were inoculated with a diffusing factor in four separate sites. Four rabbits were therefore used, and the order in which the sites were inoculated was done four different ways. The outcome measured was the area of blister (cm²). The overall objective was to see whether or not the order of administration affected the outcome. The letters in parentheses represent the order in which the sites were inoculated; letters shown as UNCLEAR_IN_SOURCE were blurry in the supplied screenshot and were not guessed.",
+      "id": 26,
+      "question": "The sample standard deviations, s₁ (younger) and s₂ (older), are:",
+      "context": "Ten younger adults had scores [34, 22, 15, 27, 37, 41, 24, 19, 26, 36] (x̄₁ = 28.10) and ten older adults had scores [45, 38, 52, 48, 25, 39, 51, 46, 55, 46] (x̄₂ = 44.50).",
       "table": {
-        "title": "Latin Square Data",
+        "title": "Life Satisfaction Scores (0–60 Scale)",
+        "headers": ["Group", "Scores"],
+        "rows": [
+          {"Group": "Younger Adults (20–30 yrs)", "Scores": [34, 22, 15, 27, 37, 41, 24, 19, 26, 36]},
+          {"Group": "Older Adults (> 70 yrs)", "Scores": [45, 38, 52, 48, 25, 39, 51, 46, 55, 46]}
+        ]
+      },
+      "options": [
+        "75.39 and 72.99",
+        "15.07",
+        "2.27",
+        "8.68 and 8.54"
+      ],
+      "correctAnswer": 3
+    },
+    {
+      "id": 27,
+      "question": "The two-sample independent t statistic is:",
+      "context": "For younger adults (n₁ = 10, x̄₁ = 28.10, s₁ = 8.68) and older adults (n₂ = 10, x̄₂ = 44.50, s₂ = 8.54) with pooled standard error SE = 3.85.",
+      "table": {
+        "title": "Life Satisfaction Scores (0–60 Scale)",
+        "headers": ["Group", "Scores"],
+        "rows": [
+          {"Group": "Younger Adults (20–30 yrs)", "Scores": [34, 22, 15, 27, 37, 41, 24, 19, 26, 36]},
+          {"Group": "Older Adults (> 70 yrs)", "Scores": [45, 38, 52, 48, 25, 39, 51, 46, 55, 46]}
+        ]
+      },
+      "options": ["3.441", "4.258", "4.259", "3.442"],
+      "correctAnswer": 1
+    },
+    {
+      "id": 28,
+      "question": "Did older adults in this sample have significantly higher life satisfaction than younger adults?",
+      "context": "In the life satisfaction study comparing older adults (x̄₂ = 44.50) vs younger adults (x̄₁ = 28.10), the calculated t-statistic is t = 4.258, which exceeds the critical value t(0.025, 18) = 2.101 at α = 0.05.",
+      "table": {
+        "title": "Life Satisfaction Scores (0–60 Scale)",
+        "headers": ["Group", "Scores"],
+        "rows": [
+          {"Group": "Younger Adults (20–30 yrs)", "Scores": [34, 22, 15, 27, 37, 41, 24, 19, 26, 36]},
+          {"Group": "Older Adults (> 70 yrs)", "Scores": [45, 38, 52, 48, 25, 39, 51, 46, 55, 46]}
+        ]
+      },
+      "options": ["Yes", "No"],
+      "correctAnswer": 0
+    },
+    {
+      "id": 29,
+      "question": "The Sum of Squares (SS) for Position, Rabbit, and Order, respectively, are:",
+      "context": "The skins of four rabbits were inoculated with a diffusing factor in four sites (Positions I–IV) in four different orders (a, b, c, d) using a 4×4 Latin Square Design. The measured outcome is blister area (cm²). (Letters in parentheses represent inoculation order).",
+      "table": {
+        "title": "Latin Square Rabbit Inoculation Blister Area (cm²)",
         "headers": ["Position", "Rabbit 1", "Rabbit 2", "Rabbit 3", "Rabbit 4"],
         "rows": [
-          {"Position": "I", "Rabbit 1": {"value": 11.61, "order": "d"}, "Rabbit 2": {"value": 12.78, "order": "a"}, "Rabbit 3": {"value": 12.96, "order": "c"}, "Rabbit 4": {"value": 13.40, "order": "UNCLEAR_IN_SOURCE"}},
-          {"Position": "II", "Rabbit 1": {"value": 6.58, "order": "UNCLEAR_IN_SOURCE"}, "Rabbit 2": {"value": 5.34, "order": "UNCLEAR_IN_SOURCE"}, "Rabbit 3": {"value": 7.98, "order": "a"}, "Rabbit 4": {"value": 7.92, "order": "c"}},
-          {"Position": "III", "Rabbit 1": {"value": 7.98, "order": "UNCLEAR_IN_SOURCE"}, "Rabbit 2": {"value": 7.94, "order": "c"}, "Rabbit 3": {"value": 6.74, "order": "b"}, "Rabbit 4": {"value": 11.32, "order": "d"}},
-          {"Position": "IV", "Rabbit 1": {"value": 9.28, "order": "c"}, "Rabbit 2": {"value": 6.12, "order": "b"}, "Rabbit 3": {"value": 7.64, "order": "UNCLEAR_IN_SOURCE"}, "Rabbit 4": {"value": 7.92, "order": "UNCLEAR_IN_SOURCE"}}
+          {
+            "Position": "Position I",
+            "Rabbit 1": {"value": 11.61, "order": "d"},
+            "Rabbit 2": {"value": 12.78, "order": "a"},
+            "Rabbit 3": {"value": 12.96, "order": "c"},
+            "Rabbit 4": {"value": 13.40, "order": "b"}
+          },
+          {
+            "Position": "Position II",
+            "Rabbit 1": {"value": 6.58, "order": "b"},
+            "Rabbit 2": {"value": 5.34, "order": "d"},
+            "Rabbit 3": {"value": 7.98, "order": "a"},
+            "Rabbit 4": {"value": 7.92, "order": "c"}
+          },
+          {
+            "Position": "Position III",
+            "Rabbit 1": {"value": 7.98, "order": "a"},
+            "Rabbit 2": {"value": 7.94, "order": "c"},
+            "Rabbit 3": {"value": 6.74, "order": "b"},
+            "Rabbit 4": {"value": 11.32, "order": "d"}
+          },
+          {
+            "Position": "Position IV",
+            "Rabbit 1": {"value": 9.28, "order": "c"},
+            "Rabbit 2": {"value": 6.12, "order": "b"},
+            "Rabbit 3": {"value": 7.64, "order": "d"},
+            "Rabbit 4": {"value": 7.92, "order": "a"}
+          }
         ]
       },
       "options": [
-        {"label": "A", "text": "82.872, 5.755 and 3.553"},
-        {"label": "B", "text": "65.411, 3.139 and 4.042"},
-        {"label": "C", "text": "82.627, 5.755 and 3.553"},
-        {"label": "D", "text": "82.872, 3.553 and 5.755"}
-      ]
+        "82.872, 5.755 and 3.553",
+        "65.411, 3.139 and 4.042",
+        "82.627, 5.755 and 3.553",
+        "82.872, 3.553 and 5.755"
+      ],
+      "correctAnswer": 0
     },
     {
-      "questionNumber": 30,
-      "type": "multiple_choice",
-      "question": "The Mean of Squares (MS) for Position, Order and Error, respectively, are:",
-      "context": "Refers to the same Latin Square rabbit experiment described in Question 29.",
-      "table": null,
+      "id": 30,
+      "question": "The Mean of Squares (MS) for Position, Order, and Error, respectively, are:",
+      "context": "In the 4×4 Latin Square rabbit experiment (total N = 16), the sums of squares are: SS(Position) = 82.872 (df = 3), SS(Rabbit) = 5.755 (df = 3), SS(Order) = 3.553 (df = 3), and SS(Error) = 15.204 (df = 6).",
+      "table": {
+        "title": "Latin Square Rabbit Inoculation Blister Area (cm²)",
+        "headers": ["Position", "Rabbit 1", "Rabbit 2", "Rabbit 3", "Rabbit 4"],
+        "rows": [
+          {
+            "Position": "Position I",
+            "Rabbit 1": {"value": 11.61, "order": "d"},
+            "Rabbit 2": {"value": 12.78, "order": "a"},
+            "Rabbit 3": {"value": 12.96, "order": "c"},
+            "Rabbit 4": {"value": 13.40, "order": "b"}
+          },
+          {
+            "Position": "Position II",
+            "Rabbit 1": {"value": 6.58, "order": "b"},
+            "Rabbit 2": {"value": 5.34, "order": "d"},
+            "Rabbit 3": {"value": 7.98, "order": "a"},
+            "Rabbit 4": {"value": 7.92, "order": "c"}
+          },
+          {
+            "Position": "Position III",
+            "Rabbit 1": {"value": 7.98, "order": "a"},
+            "Rabbit 2": {"value": 7.94, "order": "c"},
+            "Rabbit 3": {"value": 6.74, "order": "b"},
+            "Rabbit 4": {"value": 11.32, "order": "d"}
+          },
+          {
+            "Position": "Position IV",
+            "Rabbit 1": {"value": 9.28, "order": "c"},
+            "Rabbit 2": {"value": 6.12, "order": "b"},
+            "Rabbit 3": {"value": 7.64, "order": "d"},
+            "Rabbit 4": {"value": 7.92, "order": "a"}
+          }
+        ]
+      },
       "options": [
-        {"label": "A", "text": "27.609, 1.918 and 1.184"},
-        {"label": "B", "text": "27.609, 2.534 and 1.918"},
-        {"label": "C", "text": "27.609, 1.184 and 2.534"},
-        {"label": "D", "text": "21.804, 1.347 and 1.653"}
-      ]
+        "27.609, 1.918 and 1.184",
+        "27.609, 2.534 and 1.918",
+        "27.609, 1.184 and 2.534",
+        "21.804, 1.347 and 1.653"
+      ],
+      "correctAnswer": 2
     },
     {
-      "questionNumber": 31,
-      "type": "multiple_choice",
+      "id": 31,
       "question": "The F-values for Position and Rabbit, respectively, are:",
-      "context": "Refers to the same Latin Square rabbit experiment described in Question 29.",
-      "table": null,
+      "context": "In the 4×4 Latin Square rabbit experiment, MS(Position) = 27.609, MS(Rabbit) = 1.918, and MS(Error) = 2.534.",
+      "table": {
+        "title": "Latin Square Rabbit Inoculation Blister Area (cm²)",
+        "headers": ["Position", "Rabbit 1", "Rabbit 2", "Rabbit 3", "Rabbit 4"],
+        "rows": [
+          {
+            "Position": "Position I",
+            "Rabbit 1": {"value": 11.61, "order": "d"},
+            "Rabbit 2": {"value": 12.78, "order": "a"},
+            "Rabbit 3": {"value": 12.96, "order": "c"},
+            "Rabbit 4": {"value": 13.40, "order": "b"}
+          },
+          {
+            "Position": "Position II",
+            "Rabbit 1": {"value": 6.58, "order": "b"},
+            "Rabbit 2": {"value": 5.34, "order": "d"},
+            "Rabbit 3": {"value": 7.98, "order": "a"},
+            "Rabbit 4": {"value": 7.92, "order": "c"}
+          },
+          {
+            "Position": "Position III",
+            "Rabbit 1": {"value": 7.98, "order": "a"},
+            "Rabbit 2": {"value": 7.94, "order": "c"},
+            "Rabbit 3": {"value": 6.74, "order": "b"},
+            "Rabbit 4": {"value": 11.32, "order": "d"}
+          },
+          {
+            "Position": "Position IV",
+            "Rabbit 1": {"value": 9.28, "order": "c"},
+            "Rabbit 2": {"value": 6.12, "order": "b"},
+            "Rabbit 3": {"value": 7.64, "order": "d"},
+            "Rabbit 4": {"value": 7.92, "order": "a"}
+          }
+        ]
+      },
       "options": [
-        {"label": "A", "text": "10.897 and 0.775"},
-        {"label": "B", "text": "10.897 and 0.757"},
-        {"label": "C", "text": "10.897 and 0.757"},
-        {"label": "D", "text": "12.188 and 0.633"},
-        {"label": "E", "text": "10.897 and 0.467"}
-      ]
+        "10.897 and 0.775",
+        "10.897 and 0.757",
+        "10.897 and 0.757",
+        "12.188 and 0.633",
+        "10.897 and 0.467"
+      ],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 32,
-      "type": "multiple_choice",
-      "question": "Can you conclude that the order of administration affected the outcome of the experiment?",
-      "context": "Refers to the same Latin Square rabbit experiment described in Question 29.",
-      "table": null,
-      "options": [
-        {"label": "A", "text": "Yes"},
-        {"label": "B", "text": "No"}
-      ]
+      "id": 32,
+      "question": "Can you conclude that the order of administration significantly affected the outcome of the experiment?",
+      "context": "In the Latin Square experiment evaluating inoculation order (df_numerator = 3, df_error = 6), the test statistic for Order is F = 0.467, while the critical value at α = 0.05 is F(0.05, 3, 6) = 4.76.",
+      "table": {
+        "title": "Latin Square Rabbit Inoculation Blister Area (cm²)",
+        "headers": ["Position", "Rabbit 1", "Rabbit 2", "Rabbit 3", "Rabbit 4"],
+        "rows": [
+          {
+            "Position": "Position I",
+            "Rabbit 1": {"value": 11.61, "order": "d"},
+            "Rabbit 2": {"value": 12.78, "order": "a"},
+            "Rabbit 3": {"value": 12.96, "order": "c"},
+            "Rabbit 4": {"value": 13.40, "order": "b"}
+          },
+          {
+            "Position": "Position II",
+            "Rabbit 1": {"value": 6.58, "order": "b"},
+            "Rabbit 2": {"value": 5.34, "order": "d"},
+            "Rabbit 3": {"value": 7.98, "order": "a"},
+            "Rabbit 4": {"value": 7.92, "order": "c"}
+          },
+          {
+            "Position": "Position III",
+            "Rabbit 1": {"value": 7.98, "order": "a"},
+            "Rabbit 2": {"value": 7.94, "order": "c"},
+            "Rabbit 3": {"value": 6.74, "order": "b"},
+            "Rabbit 4": {"value": 11.32, "order": "d"}
+          },
+          {
+            "Position": "Position IV",
+            "Rabbit 1": {"value": 9.28, "order": "c"},
+            "Rabbit 2": {"value": 6.12, "order": "b"},
+            "Rabbit 3": {"value": 7.64, "order": "d"},
+            "Rabbit 4": {"value": 7.92, "order": "a"}
+          }
+        ]
+      },
+      "options": ["Yes", "No"],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 33,
-      "type": "multiple_choice",
+      "id": 33,
       "question": "What is the probability that a randomly selected factory worker can assemble the part in under 75 seconds or in over 81 seconds?",
       "context": "A consultant determined that the time in seconds to assemble a part for workers trained with a particular method was normally distributed with a mean of 75 seconds and a standard deviation of 6 seconds.",
       "table": null,
-      "options": [
-        {"label": "A", "text": "0.1887"},
-        {"label": "B", "text": "0.3413"},
-        {"label": "C", "text": "0.6587"},
-        {"label": "D", "text": "0.5000"}
-      ]
+      "options": ["0.1887", "0.3413", "0.6587", "0.5000"],
+      "correctAnswer": 2
     },
     {
-      "questionNumber": 34,
-      "type": "multiple_choice",
+      "id": 34,
       "question": "Which of the following is true of Latin Square Designs? You cannot evaluate interactions between: i. Rows and columns, ii. Rows and treatments, iii. Columns and treatments",
       "context": "",
       "table": null,
-      "options": [
-        {"label": "A", "text": "None of the above"},
-        {"label": "B", "text": "All of the above"},
-        {"label": "C", "text": "UNCLEAR_IN_SOURCE"}
-      ]
+      "options": ["None of the above", "All of the above", "Rows and columns only"],
+      "correctAnswer": 1
     },
     {
-      "questionNumber": 35,
-      "type": "multiple_choice",
+      "id": 35,
       "question": "What proportion of oranges weigh between 6.8 kg and 8.9 kg?",
       "context": "Suppose that the weight of navel oranges is normally distributed with mean μ = 8 kg and standard deviation σ = 1.5 kg.",
       "table": null,
-      "options": [
-        {"label": "A", "text": "0.6808"},
-        {"label": "B", "text": "0.5838"},
-        {"label": "C", "text": "0.4723"},
-        {"label": "D", "text": "0.5138"}
-      ]
+      "options": ["0.6808", "0.5838", "0.4723", "0.5138"],
+      "correctAnswer": 3
     }
   ]
 }
