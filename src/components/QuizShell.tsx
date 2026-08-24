@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { QuizData, QuizState, Question, QuizSettings } from "@/types/quiz";
 import QuestionCard from "./QuestionCard";
 import ResultScreen from "./ResultScreen";
+import CourseDropdown, { CourseOption } from "./CourseDropdown";
 
 interface ShuffledQuestion {
   question: Question;
@@ -12,13 +13,6 @@ interface ShuffledQuestion {
 
 const STORAGE_KEY_STATE = "cpe310_quiz_state";
 const STORAGE_KEY_SETTINGS = "cpe310_quiz_settings";
-
-interface CourseOption {
-  id: string;
-  name: string;
-  description: string;
-  data: QuizData;
-}
 
 export default function QuizShell({ courses }: { courses: CourseOption[] }) {
   const [selectedCourseId, setSelectedCourseId] = useState(courses[0].id);
@@ -288,32 +282,19 @@ export default function QuizShell({ courses }: { courses: CourseOption[] }) {
                 </span>
               </div>
 
-              <div className="relative">
-                <select
-                  value={selectedCourseId}
-                  onChange={(e) => {
-                    const nextCourseId = e.target.value;
-                    setSelectedCourseId(nextCourseId);
-                    const targetCourse = courses.find((c) => c.id === nextCourseId);
-                    if (targetCourse) {
-                      setAnswers(Array(targetCourse.data.questions.length).fill(-1));
-                      setCurrent(0);
-                    }
-                  }}
-                  className="w-full bg-white/[0.025] hover:bg-white/[0.05] border border-white/[0.07] hover:border-white/[0.14] rounded-2xl px-4 py-3.5 text-sm md:text-base font-semibold text-slate-100 focus:outline-none focus:border-brand-500/80 focus:ring-2 focus:ring-brand-500/20 cursor-pointer appearance-none transition-all duration-200"
-                >
-                  {courses.map((course) => (
-                    <option key={course.id} value={course.id} className="bg-slate-900 text-slate-100 py-2">
-                      {course.name}
-                    </option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
+              {/* Custom Glassmorphic Course Dropdown */}
+              <CourseDropdown
+                courses={courses}
+                selectedCourseId={selectedCourseId}
+                onSelectCourse={(nextCourseId) => {
+                  setSelectedCourseId(nextCourseId);
+                  const targetCourse = courses.find((c) => c.id === nextCourseId);
+                  if (targetCourse) {
+                    setAnswers(Array(targetCourse.data.questions.length).fill(-1));
+                    setCurrent(0);
+                  }
+                }}
+              />
 
               {/* Course Meta Info Chips */}
               <div className="grid grid-cols-2 gap-3 pt-1">
